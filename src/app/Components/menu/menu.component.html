@@ -3,7 +3,9 @@
       [attr.role]="(isWeb$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isWeb$ | async) ? 'over' : 'side'"
       [opened]="(isWeb$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar><span class="material-symbols-outlined">
+      home
+      </span>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="/Persona"> <span class="material-symbols-outlined">
         person_filled
@@ -26,7 +28,7 @@
       <a mat-list-item href="/Asistencia"><span class="material-symbols-outlined">
         assignment
         </span> Asistencia</a>
-        <a mat-list-item href="/Form"> Form</a>
+        <a mat-list-item href="/Formulario"> Formulario</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -41,7 +43,7 @@
       </button>
       <span>Gimnasio ETITC</span>
     </mat-toolbar>
-    <!-- Add Content Here -->
-    <router-outlet></router-outlet>
+    <app-login></app-login>
+   <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
