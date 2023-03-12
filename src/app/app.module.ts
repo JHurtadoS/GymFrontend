@@ -15,6 +15,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AdminComponent } from './components/pages/admin/admin.component';
+import { AsistenciaComponent } from './components/admin/asistencia/asistencia.component';
+import { EjercicioComponent } from './components/admin/ejercicio/ejercicio.component';
+import { EventoComponent } from './components/admin/evento/evento.component';
+import { HerramientaComponent } from './components/admin/herramienta/herramienta.component';
+import { PersonaComponent } from './components/admin/persona/persona.component';
+import { RutinasEjecicioComponent } from './components/admin/rutinas-ejecicio/rutinas-ejecicio.component';
+import { RutinaspersonaComponent } from './components/admin/rutinaspersona/rutinaspersona.component';
+import { UsuarioComponent } from './components/admin/usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +32,14 @@ import { AdminComponent } from './components/pages/admin/admin.component';
     LoginComponent,
     MenuComponent,
     AdminComponent,
+    AsistenciaComponent,
+    EjercicioComponent,
+    EventoComponent,
+    HerramientaComponent,
+    PersonaComponent,
+    RutinasEjecicioComponent,
+    RutinaspersonaComponent,
+    UsuarioComponent,
   ],
   imports: [
     BrowserModule,
