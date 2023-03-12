@@ -1,18 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { persona } from './interface';
+import { herramienta } from './interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PersonaService {
+export class HerramientaService {
   constructor(public http: HttpClient) {}
 
   url = 'https://localhost:7246/api';
   async getall(Controller: string) {
-    let response: persona[] = [];
+    let response: herramienta[] = [];
     await this.http
-      .get<persona[]>(this.url + Controller)
+      .get<herramienta[]>(this.url + Controller)
       .toPromise()
       .then((res) => {
         response = res ? res : [];

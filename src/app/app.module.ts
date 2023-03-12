@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EstudiantesComponent } from '../app/components/estudiantes/estudiantes.component';
-import { RutinaComponent } from './components/rutina/rutina.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/pages/login/login.component';
 import { MenuComponent } from './components/UiMaterial/menu/menu.component';
@@ -23,11 +22,12 @@ import { PersonaComponent } from './components/admin/persona/persona.component';
 import { RutinasEjecicioComponent } from './components/admin/rutinas-ejecicio/rutinas-ejecicio.component';
 import { RutinaspersonaComponent } from './components/admin/rutinaspersona/rutinaspersona.component';
 import { UsuarioComponent } from './components/admin/usuario/usuario.component';
+import { RutinaComponent } from './components/admin/rutina/rutina.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EstudiantesComponent,
     RutinaComponent,
     LoginComponent,
     MenuComponent,
@@ -51,6 +51,7 @@ import { UsuarioComponent } from './components/admin/usuario/usuario.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
