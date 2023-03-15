@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/Services/api.service';
 
 @Component({
   selector: 'app-persona',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonaComponent implements OnInit {
 
-  constructor(){}
+  constructor(public api:ApiService){} 
     ngOnInit(): void {
-
+      var response=this.api.getAll("Personas")
+      console.log(response);
     }
   
 }

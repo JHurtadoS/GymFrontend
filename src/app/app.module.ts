@@ -27,6 +27,7 @@ import { UsuarioComponent } from './Components/usuario/usuario.component';
 import { LoginComponent } from './Components/login/login.component';
 import { HerramientaComponent } from './Components/herramienta/herramienta.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
 
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     MatInputModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/Services/api.service';
 
 @Component({
   selector: 'app-evento',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventoComponent implements OnInit {
 
-  constructor(){}
+  constructor(public api:ApiService){} 
     ngOnInit(): void {
-
+      var response=this.api.getAll("Eventoes")
+      console.log(response);
     }
   
 }
