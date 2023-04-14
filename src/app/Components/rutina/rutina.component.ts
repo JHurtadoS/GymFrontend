@@ -10,8 +10,7 @@ export class RutinaComponent implements OnInit {
 
   constructor(public api:ApiService){} 
   ngOnInit(): void {
-    var response=this.api.getAll("Rutinas")
-    console.log(response);
+    
   }
   
 }

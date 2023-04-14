@@ -10,8 +10,7 @@ export class EjerciciosComponent implements OnInit {
 
   constructor(public api:ApiService){} 
     ngOnInit(): void {
-      var response=this.api.getAll("Ejercicios")
-      console.log(response);
+      
     }
   
 }

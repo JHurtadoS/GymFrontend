@@ -11,6 +11,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MenuComponent } from './Components/menu/menu.component';
@@ -53,6 +54,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,

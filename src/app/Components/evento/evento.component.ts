@@ -10,8 +10,7 @@ export class EventoComponent implements OnInit {
 
   constructor(public api:ApiService){} 
     ngOnInit(): void {
-      var response=this.api.getAll("Eventoes")
-      console.log(response);
+      
     }
   
 }

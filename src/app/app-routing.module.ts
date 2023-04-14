@@ -21,6 +21,7 @@ const routes: Routes = [
 {path:"login", component:LoginComponent},
 {path:"Rutina", component:RutinaComponent},
 {path:"Usuario", component:UsuarioComponent}
+
 ];
 
 @NgModule({
