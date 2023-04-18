@@ -3,56 +3,69 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './components/pages/login/login.component';
-import { MenuComponent } from './components/UiMaterial/menu/menu.component';
+import { FormularioComponent } from './components/formulario/formulario.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MenuComponent } from './components/menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { AdminComponent } from './components/pages/admin/admin.component';
-import { AsistenciaComponent } from './components/admin/asistencia/asistencia.component';
-import { EjercicioComponent } from './components/admin/ejercicio/ejercicio.component';
-import { EventoComponent } from './components/admin/evento/evento.component';
-import { HerramientaComponent } from './components/admin/herramienta/herramienta.component';
-import { PersonaComponent } from './components/admin/persona/persona.component';
-import { RutinasEjecicioComponent } from './components/admin/rutinas-ejecicio/rutinas-ejecicio.component';
-import { RutinaspersonaComponent } from './components/admin/rutinaspersona/rutinaspersona.component';
-import { UsuarioComponent } from './components/admin/usuario/usuario.component';
-
+import { AsistenciaComponent } from './components/asistencia/asistencia.component';
+import { EjerciciosComponent } from './components/ejercicios/ejercicios.component';
+import { EventoComponent } from './components/evento/evento.component';
+import { PersonaComponent } from './components/persona/persona.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { LoginComponent } from './components/login/login.component';
+import { HerramientaComponent } from './components/herramienta/herramienta.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { RutinaComponent } from './components/admin/rutina/rutina.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RutinaComponent,
+    FormularioComponent,
+    HerramientaComponent,
+    AsistenciaComponent,
+    EjerciciosComponent,
+    EventoComponent,
+    PersonaComponent,
+    UsuarioComponent,
     LoginComponent,
     MenuComponent,
-    AdminComponent,
-    AsistenciaComponent,
-    EjercicioComponent,
-    EventoComponent,
-    HerramientaComponent,
-    PersonaComponent,
-    RutinasEjecicioComponent,
-    RutinaspersonaComponent,
-    UsuarioComponent,
   ],
+
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     LayoutModule,
     MatToolbarModule,
-    MatButtonModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

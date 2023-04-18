@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isWeb$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isWeb$ | async) ? 'over' : 'side'"
+      [opened]="(isWeb$ | async) === false">
+    <mat-toolbar><span class="material-symbols-outlined">
+      home
+      </span>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="/Persona"> <span class="material-symbols-outlined">
+        person_filled
+        </span> Persona</a>
+      <a mat-list-item href="/Usuario"> <span class="material-symbols-outlined">
+        groups
+        </span> Usuario</a>
+      <a mat-list-item href="/Ejercicios"><span class="material-symbols-outlined">
+        fitness_center
+        </span> Ejercicio</a>
+      <a mat-list-item href="/Rutina"><span class="material-symbols-outlined">
+        sports_gymnastics
+        </span> Rutina</a>
+      <a mat-list-item href="/Herramienta"><span class="material-symbols-outlined">
+        exercise
+        </span> Herramienta</a>
+      <a mat-list-item href="/Evento"><span class="material-symbols-outlined">
+        event
+        </span> Evento</a>
+      <a mat-list-item href="/Asistencia"><span class="material-symbols-outlined">
+        assignment
+        </span> Asistencia</a>
+        <a mat-list-item href="/Formulario"> <span class="material-symbols-outlined">
+          edit_note
+          </span> Formulario</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="toolbar">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isWeb$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Gimnasio ETITC</span>
+    </mat-toolbar>
+    
+    
+   <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
