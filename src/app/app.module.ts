@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
-import { MatInputModule } from '@angular/material/input';
+//import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
-import { MatFormFieldModule } from '@angular/material/form-field';
+//import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MenuComponent } from './components/menu/menu.component';
@@ -30,6 +29,10 @@ import { HerramientaComponent } from './components/herramienta/herramienta.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { RutinaComponent } from './components/rutina/rutina.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     PersonaComponent,
     UsuarioComponent,
     LoginComponent,
+    RutinaComponent,
     MenuComponent,
   ],
 
@@ -54,10 +58,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatRadioModule,
     MatCardModule,
     MatTableModule,
-    MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatTableModule,
     MatPaginatorModule,
     MatSortModule,
     LayoutModule,
@@ -66,6 +68,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatListModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
