@@ -22,8 +22,9 @@ import { PersonaComponent } from './components/admin/persona/persona.component';
 import { RutinasEjecicioComponent } from './components/admin/rutinas-ejecicio/rutinas-ejecicio.component';
 import { RutinaspersonaComponent } from './components/admin/rutinaspersona/rutinaspersona.component';
 import { UsuarioComponent } from './components/admin/usuario/usuario.component';
-import { RutinaComponent } from './components/admin/rutina/rutina.component';
+
 import { HttpClientModule } from '@angular/common/http';
+import { RutinaComponent } from './components/admin/rutina/rutina.component';
 
 @NgModule({
   declarations: [
