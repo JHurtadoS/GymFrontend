@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AsistenciaComponent } from './components/asistencia/asistencia.component';
-import { EjerciciosComponent } from './components/ejercicios/ejercicios.component';
-import { EventoComponent } from './components/evento/evento.component';
-import { FormularioComponent } from './components/formulario/formulario.component';
-import { HerramientaComponent } from './components/herramienta/herramienta.component';
-import { LoginComponent } from './components/login/login.component';
-import { PersonaComponent } from './components/persona/persona.component';
-import { RutinaComponent } from './components/rutina/rutina.component';
-import { UsuarioComponent } from './components/usuario/usuario.component';
+import { AsistenciaComponent } from './Components/asistencia/asistencia.component';
+import { EjerciciosComponent } from './Components/ejercicios/ejercicios.component';
+import { EventoComponent } from './Components/evento/evento.component';
+import { FormularioComponent } from './Components/formulario/formulario.component';
+import { HerramientaComponent } from './Components/herramienta/herramienta.component';
+import { LoginComponent } from './Components/login/login.component';
+import { PersonaComponent } from './Components/persona/persona.component';
+import { RutinaComponent } from './Components/rutina/rutina.component';
+import { UsuarioComponent } from './Components/usuario/usuario.component';
+import { UsuarioCreateFormComponent } from './Components/usuario-create-form/usuario-create-form.component';
 
 const routes: Routes = [
   { path: 'Persona', component: PersonaComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'Rutina', component: RutinaComponent },
   { path: 'Usuario', component: UsuarioComponent },
+  { path: 'Login', component: UsuarioCreateFormComponent },
 ];
 
 @NgModule({
