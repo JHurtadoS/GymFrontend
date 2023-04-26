@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
+import { TableService } from 'src/app/Services/table.service';
 
 @Component({
   selector: 'app-usuario',
@@ -11,14 +12,14 @@ import { ApiService } from 'src/app/Services/api.service';
 })
 export class UsuarioComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] ;
-
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public api: ApiService) {
+  constructor(public api: ApiService, public tableService: TableService) {
     this.dataSource = new MatTableDataSource();
+    this.tableService.reponseTable=res;
   }
 
   ngOnInit(): void {
@@ -32,6 +33,10 @@ export class UsuarioComponent implements OnInit, AfterViewInit {
 
   public async GetUsuario() {
     this.api.Get('Usuarios').then((res) => {
+     for (let index = 0; index < res.lenght; index ++) {
+      this.loadTable([res[index]])
+     }    
+      
       this.loadTable(res);
       this.dataSource.data = res;
     });

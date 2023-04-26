@@ -29,6 +29,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { HerramientaComponent } from './Components/herramienta/herramienta.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { TableComponent } from './Components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { HttpClientModule } from '@angular/common/http';
     PersonaComponent,
     UsuarioComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    TableComponent
 
   ],
 
