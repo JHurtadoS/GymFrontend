@@ -33,6 +33,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RutinaComponent } from './Components/rutina/rutina.component';
 import { UsuarioCreateFormComponent } from './Components/usuario-create-form/usuario-create-form.component';
+import { CreateRutinaComponent } from './Components/create-rutina/create-rutina.component';
+import { CreateEjerciciosComponent } from './components/create-ejercicios/create-ejercicios.component';
+import { CreateHerramientaComponent } from './components/create-herramienta/create-herramienta.component';
+
+
 
 @NgModule({
   declarations: [
@@ -48,6 +53,9 @@ import { UsuarioCreateFormComponent } from './Components/usuario-create-form/usu
     LoginComponent,
     RutinaComponent,
     MenuComponent,
+    CreateRutinaComponent,
+    CreateEjerciciosComponent,
+    CreateHerramientaComponent,
   ],
 
   imports: [
@@ -75,4 +83,4 @@ import { UsuarioCreateFormComponent } from './Components/usuario-create-form/usu
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
