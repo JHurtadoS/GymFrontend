@@ -9,49 +9,22 @@ import { ApiService } from 'src/app/Services/api.service';
   templateUrl: './persona.component.html',
   styleUrls: ['./persona.component.css'],
 })
-export class PersonaComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[];
-
+export class PersonaComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  data: any[]
 
   constructor(public api: ApiService) {
     this.dataSource = new MatTableDataSource();
   }
 
   ngOnInit(): void {
-    this.GetPersona();
+    this.GetAsistencia();
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  public async GetPersona() {
+  public async GetAsistencia() {
     this.api.Get('Personas').then((res) => {
-      this.loadTable(res);
       this.dataSource.data = res;
+      this.data = res
     });
-  }
-
-  public loadTable(data: any[]) {
-    this.displayedColumns = [];
-    let objeto = data[0];
-
-    for (let nombre of Object.keys(objeto)) {
-      this.displayedColumns.push(nombre);
-    }
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
 }
