@@ -11,6 +11,10 @@ import { UsuarioComponent } from './Components/usuario/usuario.component';
 import { UsuarioCreateFormComponent } from './Components/usuario-create-form/usuario-create-form.component';
 import { CreateRutinaComponent } from './Components/create-rutina/create-rutina.component';
 import { CreateEjerciciosComponent } from './components/create-ejercicios/create-ejercicios.component';
+import { CreateHerramientaComponent } from './components/create-herramienta/create-herramienta.component';
+import { LoginComponent } from './Components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
+import { PruebaAdminComponent } from './components/prueba-admin/prueba-admin.component';
 
 const routes: Routes = [
   { path: 'Persona', component: PersonaComponent },
@@ -23,7 +27,12 @@ const routes: Routes = [
   { path: 'Usuario', component: UsuarioComponent },
   { path: 'createUser', component: UsuarioCreateFormComponent },
   { path: 'createRutina', component: CreateRutinaComponent },
-  { path: 'createEjercicio', component: CreateEjerciciosComponent }
+  { path: 'createEjercicio', component: CreateEjerciciosComponent },
+  { path: 'createHerramienta', component: CreateHerramientaComponent },
+
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: PruebaAdminComponent, canActivate: [AuthGuard] }
+
 ];
 
 @NgModule({

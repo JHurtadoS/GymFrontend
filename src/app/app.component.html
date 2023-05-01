@@ -1,7 +1,7 @@
-<div *ngIf="login == false; else logintrue">
-  <app-login></app-login>
-</div>
-
-<ng-template #logintrue>
+<div>Bienvenido</div>
+<ng-container>
   <app-menu></app-menu>
+</ng-container>
+<ng-template #notLoggedIn>
+  <div>Iniciar sesión</div>
 </ng-template>

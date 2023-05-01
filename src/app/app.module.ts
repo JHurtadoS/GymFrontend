@@ -36,6 +36,11 @@ import { UsuarioCreateFormComponent } from './Components/usuario-create-form/usu
 import { CreateRutinaComponent } from './Components/create-rutina/create-rutina.component';
 import { CreateEjerciciosComponent } from './components/create-ejercicios/create-ejercicios.component';
 import { CreateHerramientaComponent } from './components/create-herramienta/create-herramienta.component';
+import { PruebaAdminComponent } from './components/prueba-admin/prueba-admin.component';
+import { AuthGuard } from './guards/auth.guard';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './store/app.reducer';
+import { TablaComponent } from './Components/tabla/tabla.component';
 
 
 
@@ -56,9 +61,12 @@ import { CreateHerramientaComponent } from './components/create-herramienta/crea
     CreateRutinaComponent,
     CreateEjerciciosComponent,
     CreateHerramientaComponent,
+    PruebaAdminComponent,
+    TablaComponent,
   ],
 
   imports: [
+    StoreModule.forRoot({ app: appReducer }),
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
@@ -80,7 +88,10 @@ import { CreateHerramientaComponent } from './components/create-herramienta/crea
     BrowserAnimationsModule,
     MatFormFieldModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
+  exports: [
+    TablaComponent
+  ],
 })
 export class AppModule { }

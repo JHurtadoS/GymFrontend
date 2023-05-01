@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { map, shareReplay, take } from 'rxjs/operators';
+import { Store, select } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.reducer';
+import { logout } from 'src/app/store/app.actions';
 
 @Component({
   selector: 'app-menu',
@@ -16,6 +19,27 @@ export class MenuComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  loggedIn$: Observable<boolean>;
+
+  onLogout() {
+    console.log("borrando")
+    localStorage.removeItem('auth_token');
+
+    this.store.dispatch(logout());
+    // this.isLoggedIn = false;
+  }
+
+  constructor(private breakpointObserver: BreakpointObserver, private store: Store<AppState>) {
+
+  }
+  ngOnInit(): void {
+    this.loggedIn$ = this.store.pipe(select(state => state.loggedIn));
+    this.store.select(state => state.loggedIn).subscribe(loggedIn => {
+      console.log('El valor de loggedIn ha cambiado:', loggedIn);
+    });
+  }
+
 
 }
+
+

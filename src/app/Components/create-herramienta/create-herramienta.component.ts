@@ -1,9 +1,66 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/Services/api.service';
 
 @Component({
   templateUrl: './create-herramienta.component.html',
   styleUrls: ['./create-herramienta.component.scss']
 })
 export class CreateHerramientaComponent {
+  form: FormGroup = new FormGroup({
+    nombre: new FormControl(null, [Validators.required, Validators.max(80)]),
+    descripcion: new FormControl(null, [Validators.required, Validators.max(80)]),
+    imagenAsociada: new FormControl(null, [Validators.required]),
+  });
 
+  constructor(private api: ApiService) { }
+
+  submit() {
+    let validationMessage: string;
+    if (this.form.valid) {
+      validationMessage = 'La validación fue correcta';
+      const formData = new FormData();
+      formData.append('nombre', this.form.get('nombre').value);
+      formData.append('descripcion', this.form.get('descripcion').value);
+      formData.append('imagenAsociada', this.form.get('imagenAsociada').value);
+      console.log(formData.getAll("imagenAsociada"))
+      this.api.Post('Rutinas', formData).then(() => {
+        // Éxito en la llamada POST
+        this.submitEM.emit();
+      }, (error) => {
+        // Error en la llamada POST
+        this.error = error.message;
+      });
+    } else {
+      validationMessage = 'Validacion incorrecta';
+    }
+
+    alert(validationMessage);
+  }
+  onFileSelected(event): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      const ext = file.name.split('.')[1].toLowerCase();
+      if (ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png') {
+        this.form.get('imagenAsociada').setErrors({ 'invalidFileType': true });
+        this.form.get('imagenAsociada').setValue(null);
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        const base64: string = e.target.result.toString()
+        this.form.get('imagenAsociada').setValue(base64);
+      };
+    }
+  }
+
+  removeImage(): void {
+    this.form.get('imagenAsociada').setValue(null);
+  }
+
+  @Input() error: string | null;
+
+  @Output() submitEM = new EventEmitter();
 }

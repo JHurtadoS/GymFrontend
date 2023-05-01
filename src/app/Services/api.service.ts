@@ -29,6 +29,22 @@ export class ApiService {
     return response;
   }
 
+  async Post2(Controller: string, body: any) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.url + Controller, body).subscribe(
+        (res: any) => {
+          console.log(res);
+          resolve(res);
+        },
+        (err: any) => {
+          reject(err);
+        }
+      );
+    });
+  }
+
+
+
   async Put(Controller: string, id: string, body: any) {
     var response: any;
 
