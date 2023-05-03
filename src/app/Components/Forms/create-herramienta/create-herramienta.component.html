@@ -1,3 +1,6 @@
+<app-menu>
+</app-menu>
+
 <mat-card>
   <mat-card-title class="title">Post</mat-card-title>
   <mat-card-content>
@@ -8,6 +11,10 @@
         <input type="text" matInput placeholder="Descripcion" formControlName="descripcion">
       </mat-form-field>
 
+      <p
+        *ngIf="form.controls['descripcion'].invalid && (form.controls['descripcion'].dirty || form.controls['descripcion'].touched)">
+        Error de Validacion
+      </p>
 
 
       <mat-form-field class="nombre">
@@ -15,9 +22,13 @@
         <input type="text" matInput placeholder="nombre" formControlName="nombre">
       </mat-form-field>
 
+      <p *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
+        Error de Validacion
+      </p>
 
       <input type="file" (change)="onFileSelected($event)" formControlName="imagenAsociada"
         accept="image/jpeg,image/png">
+
 
 
 

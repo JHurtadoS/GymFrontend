@@ -1,3 +1,6 @@
+<app-menu>
+</app-menu>
+
 <mat-card>
   <mat-card-title class="title">Post</mat-card-title>
   <mat-card-content>
@@ -7,11 +10,18 @@
           <input type="text" matInput placeholder="nombre" formControlName="nombre">
         </mat-form-field>
       </p>
+      <p *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
+        Error de Validacion
+      </p>
 
       <p>
         <mat-form-field>
           <input type="text" class="campo" matInput placeholder="Tipo de rutina" formControlName="tipRutina">
         </mat-form-field>
+      </p>
+      <p
+        *ngIf="form.controls['tipRutina'].invalid && (form.controls['tipRutina'].dirty || form.controls['tipRutina'].touched)">
+        Error de Validacion
       </p>
 
       <p *ngIf="error" class="error">

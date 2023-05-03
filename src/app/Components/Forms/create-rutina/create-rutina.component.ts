@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   templateUrl: './create-rutina.component.html',
@@ -33,7 +34,15 @@ export class CreateRutinaComponent {
       validationMessage = 'Validacion incorrecta';
     }
 
-    alert(validationMessage);
+    validationMessage == "Validacion incorrecta" ? Swal.fire(
+      'Error',
+      'Validacion incorrecta',
+      'error'
+    ) : Swal.fire(
+      'Succes',
+      'Validacion Correcta',
+      'success'
+    )
   }
 
   @Input() error: string | null;

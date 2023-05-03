@@ -19,28 +19,32 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { AsistenciaComponent } from './Components/asistencia/asistencia.component';
-import { EjerciciosComponent } from './Components/ejercicios/ejercicios.component';
-import { EventoComponent } from './Components/evento/evento.component';
-import { PersonaComponent } from './Components/persona/persona.component';
-import { UsuarioComponent } from './Components/usuario/usuario.component';
+import { AsistenciaComponent } from './Components/tablas/asistencia/asistencia.component';
+import { EjerciciosComponent } from './Components/tablas/ejercicios/ejercicios.component';
+import { EventoComponent } from './Components/tablas/evento/evento.component';
+import { PersonaComponent } from './Components/tablas/persona/persona.component';
+import { UsuarioComponent } from './Components/tablas/usuario/usuario.component';
 import { LoginComponent } from './Components/login/login.component';
-import { HerramientaComponent } from './Components/herramienta/herramienta.component';
+import { HerramientaComponent } from './Components/tablas/herramienta/herramienta.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { RutinaComponent } from './Components/rutina/rutina.component';
-import { UsuarioCreateFormComponent } from './Components/usuario-create-form/usuario-create-form.component';
-import { CreateRutinaComponent } from './Components/create-rutina/create-rutina.component';
-import { CreateEjerciciosComponent } from './components/create-ejercicios/create-ejercicios.component';
-import { CreateHerramientaComponent } from './components/create-herramienta/create-herramienta.component';
+import { RutinaComponent } from './Components/tablas/rutina/rutina.component';
+import { UsuarioCreateFormComponent } from './Components/Forms/usuario-create-form/usuario-create-form.component';
+import { CreateRutinaComponent } from './Components/Forms/create-rutina/create-rutina.component';
+import { CreateEjerciciosComponent } from './Components/Forms/create-ejercicios/create-ejercicios.component';
+import { CreateHerramientaComponent } from './Components/Forms/create-herramienta/create-herramienta.component';
 import { PruebaAdminComponent } from './components/prueba-admin/prueba-admin.component';
 import { AuthGuard } from './guards/auth.guard';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/app.reducer';
 import { TablaComponent } from './Components/tabla/tabla.component';
+import { NavBarTitleComponent } from './components/nav-bar-title/nav-bar-title.component';
+import { CreateAsistenciaComponent } from './Components/Forms/create-asistencia/create-asistencia.component';
+import { CreateEventoComponent } from './Components/Forms/create-evento/create-evento.component';
+import { CreatePersonaComponent } from './Components/Forms/create-persona/create-persona.component';
 
 
 
@@ -63,6 +67,10 @@ import { TablaComponent } from './Components/tabla/tabla.component';
     CreateHerramientaComponent,
     PruebaAdminComponent,
     TablaComponent,
+    NavBarTitleComponent,
+    CreateAsistenciaComponent,
+    CreateEventoComponent,
+    CreatePersonaComponent,
   ],
 
   imports: [
