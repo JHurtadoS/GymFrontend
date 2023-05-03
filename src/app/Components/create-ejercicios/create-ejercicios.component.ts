@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
+import Swal from 'sweetalert2';
 
 export interface Herramienta {
   id: number;
@@ -71,7 +72,17 @@ export class CreateEjerciciosComponent implements OnInit {
       validationMessage = 'Validacion incorrecta';
     }
 
-    alert(validationMessage);
+
+    validationMessage == "Validacion incorrecta" ? Swal.fire(
+      'Error',
+      'Validacion incorrecta',
+      'error'
+    ) : Swal.fire(
+      'Succes',
+      'Validacion Correcta',
+      'success'
+    )
+
   }
 
   @Input() error: string | null;

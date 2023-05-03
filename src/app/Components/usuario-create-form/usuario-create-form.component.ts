@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -32,7 +33,15 @@ export class UsuarioCreateFormComponent {
       validationMessage = 'Por favor, complete todos los campos';
     }
 
-    alert(validationMessage);
+    validationMessage == "Validacion incorrecta" ? Swal.fire(
+      'Error',
+      'Validacion incorrecta',
+      'error'
+    ) : Swal.fire(
+      'Succes',
+      'Validacion Correcta',
+      'success'
+    )
   }
 
   @Input() error: string | null;

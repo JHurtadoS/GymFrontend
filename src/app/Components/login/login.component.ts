@@ -7,6 +7,7 @@ import { ApiService } from 'src/app/Services/api.service';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { login } from 'src/app/store/app.actions';
 import { AppState } from 'src/app/store/app.reducer';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -42,13 +43,23 @@ export class LoginComponent {
       })
         .catch((error: any) => {
           console.error(error);
-          alert('No autorizado');
+          Swal.fire(
+            'error',
+            'No autorizado',
+            'error'
+
+          )
         });
     } else {
       validationMessage = 'Por favor, complete todos los campos';
     }
 
-    alert(validationMessage);
+    Swal.fire(
+      'Succes',
+      validationMessage,
+      'success'
+
+    )
   }
 
   @Input() error: string | null;

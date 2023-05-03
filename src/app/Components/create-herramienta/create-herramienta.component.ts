@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   templateUrl: './create-herramienta.component.html',
@@ -35,7 +36,15 @@ export class CreateHerramientaComponent {
       validationMessage = 'Validacion incorrecta';
     }
 
-    alert(validationMessage);
+    validationMessage == "Validacion incorrecta" ? Swal.fire(
+      'Error',
+      'Validacion incorrecta',
+      'error'
+    ) : Swal.fire(
+      'Succes',
+      'Validacion Correcta',
+      'success'
+    )
   }
   onFileSelected(event): void {
     const file: File = event.target.files[0];

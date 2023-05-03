@@ -5,6 +5,7 @@ import { map, shareReplay, take } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.reducer';
 import { logout } from 'src/app/store/app.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -23,13 +24,14 @@ export class MenuComponent {
 
   onLogout() {
     console.log("borrando")
+    this.router.navigateByUrl('/login');
     localStorage.removeItem('auth_token');
 
     this.store.dispatch(logout());
     // this.isLoggedIn = false;
   }
 
-  constructor(private breakpointObserver: BreakpointObserver, private store: Store<AppState>) {
+  constructor(private breakpointObserver: BreakpointObserver, private store: Store<AppState>, private router: Router) {
 
   }
   ngOnInit(): void {
