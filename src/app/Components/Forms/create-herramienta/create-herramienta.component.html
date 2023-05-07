@@ -1,9 +1,21 @@
+<<<<<<< HEAD
 <mat-card>
   <mat-card-title class="title">Formulario Herramienta</mat-card-title>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="submit()">
 
       <mat-form-field class="descripcion">
+=======
+<app-menu>
+</app-menu>
+
+<mat-card>
+  <mat-card-title class="title">Post</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <mat-form-field class="nombre">
+>>>>>>> GymFront/main
         <mat-label>Descripcion</mat-label>
         <input type="text" matInput placeholder="Descripcion" formControlName="descripcion">
       </mat-form-field>
@@ -13,8 +25,14 @@
         Error de Validacion
       </p>
 
+<<<<<<< HEAD
       <mat-form-field class="nombre">
         <mat-label>Nombre:</mat-label>
+=======
+
+      <mat-form-field class="nombre">
+        <mat-label>Nombre</mat-label>
+>>>>>>> GymFront/main
         <input type="text" matInput placeholder="nombre" formControlName="nombre">
       </mat-form-field>
 
@@ -26,6 +44,12 @@
         accept="image/jpeg,image/png">
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> GymFront/main
       <p *ngIf="error" class="error">
         {{ error }}
       </p>

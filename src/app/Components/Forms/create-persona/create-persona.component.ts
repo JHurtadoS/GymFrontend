@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
@@ -53,3 +54,14 @@ export class CreatePersonaComponent {
   @Output() submitEM = new EventEmitter();
 }
 
+=======
+import { Component } from '@angular/core';
+
+@Component({
+  templateUrl: './create-persona.component.html',
+  styleUrls: ['./create-persona.component.scss']
+})
+export class CreatePersonaComponent {
+
+}
+>>>>>>> GymFront/main

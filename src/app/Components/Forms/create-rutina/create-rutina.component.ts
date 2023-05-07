@@ -2,10 +2,18 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
 import Swal from 'sweetalert2';
+<<<<<<< HEAD
 @Component({
   selector: 'app-create-rutina',
   templateUrl: './create-rutina.component.html',
   styleUrls: ['./create-rutina.component.sass']
+=======
+
+@Component({
+  templateUrl: './create-rutina.component.html',
+  selector: 'app-create-rutina',
+  styleUrls: ['./create-rutina.component.scss']
+>>>>>>> GymFront/main
 })
 export class CreateRutinaComponent {
   form: FormGroup = new FormGroup({

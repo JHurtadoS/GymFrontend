@@ -1,0 +1,24 @@
+.botones-main {
+  display: flex;
+
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.botones {
+  a:not(:first-child) {
+    margin-left: 20px;
+  }
+}
+
+.title {
+  text-decoration: none;
+  color: #333;
+}
+
+:host {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}

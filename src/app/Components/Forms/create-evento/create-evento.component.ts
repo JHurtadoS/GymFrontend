@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
@@ -50,3 +51,14 @@ export class CreateEventoComponent {
   @Output() submitEM = new EventEmitter();
 }
 
+=======
+import { Component } from '@angular/core';
+
+@Component({
+  templateUrl: './create-evento.component.html',
+  styleUrls: ['./create-evento.component.scss']
+})
+export class CreateEventoComponent {
+
+}
+>>>>>>> GymFront/main
