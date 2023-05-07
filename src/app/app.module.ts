@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './Components/formulario/formulario.component';
@@ -14,7 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { MenuComponent } from './Components/menu/menu.component';
+
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -25,11 +24,18 @@ import { EjerciciosComponent } from './Components/ejercicios/ejercicios.componen
 import { EventoComponent } from './Components/evento/evento.component';
 import { PersonaComponent } from './Components/persona/persona.component';
 import { UsuarioComponent } from './Components/usuario/usuario.component';
-import { LoginComponent } from './Components/login/login.component';
 import { HerramientaComponent } from './Components/herramienta/herramienta.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { TableComponent } from './Components/table/table.component';
+import { CreateAsistenciaComponent } from './Components/Forms/create-asistencia/create-asistencia.component';
+import { CreateEjerciciosComponent } from './Components/Forms/create-ejercicios/create-ejercicios.component';
+import { CreateEventoComponent } from './Components/Forms/create-evento/create-evento.component';
+import { CreateHerramientaComponent } from './Components/Forms/create-herramienta/create-herramienta.component';
+import { CreatePersonaComponent } from './Components/Forms/create-persona/create-persona.component';
+import { CreateRutinaComponent } from './Components/Forms/create-rutina/create-rutina.component';
+import { CreateUsuarioComponent } from './Components/Forms/create-usuario/create-usuario.component';
+
 
 @NgModule({
   declarations: [
@@ -41,10 +47,16 @@ import { TableComponent } from './Components/table/table.component';
     EventoComponent,
     PersonaComponent,
     UsuarioComponent,
-    LoginComponent,
-    MenuComponent,
-    TableComponent
-
+    TableComponent,
+    CreateAsistenciaComponent,
+    CreateEjerciciosComponent,
+    CreateEventoComponent,
+    CreateHerramientaComponent,
+    CreatePersonaComponent,
+    CreateRutinaComponent,
+    CreateUsuarioComponent,
+    //LoginComponent,
+    //MenuComponent
   ],
 
   imports: [
@@ -57,10 +69,7 @@ import { TableComponent } from './Components/table/table.component';
     MatRadioModule,
     MatCardModule,
     MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
     ReactiveFormsModule,
-    MatTableModule,
     MatPaginatorModule,
     MatSortModule,
     LayoutModule,
@@ -68,9 +77,12 @@ import { TableComponent } from './Components/table/table.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
   ],
+
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [TableComponent],
 })
 export class AppModule { }

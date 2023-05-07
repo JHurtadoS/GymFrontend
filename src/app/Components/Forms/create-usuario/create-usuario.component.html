@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-title class="title">Formulario usuario</mat-card-title>
+  <mat-card-content>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+  <p>
+    <mat-form-field class="correo">
+        <mat-label>Correo:</mat-label>
+      <input type="text" matInput placeholder="Correo" formControlName="correo">
+    </mat-form-field>
+  </p>
+  
+  <p>
+    <mat-form-field>
+        <mat-label>Constraseña:</mat-label>
+      <input type="password" class="contraseña" matInput placeholder="contraseña" formControlName="contraseña">
+    </mat-form-field>
+  </p>
+  
+  <p *ngIf="error" class="error">
+    {{ error }}
+  </p>
+  
+  <div class="button">
+    <button type="submit" mat-button>Enviar</button>
+  </div>
+  
+  </form>
+  <div *ngIf="error">
+    <p>{{ error }}</p>
+  </div>
+  </mat-card-content>
+  </mat-card>
