@@ -1,1 +1,58 @@
-<p>create-evento works!</p>
+<mat-card>
+    <mat-card-title class="title">Formulario Evento</mat-card-title>
+  <mat-card-content>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+  <p>
+    <mat-form-field class="nombre">
+        <mat-label>Nombre:</mat-label>
+      <input type="text" matInput placeholder="Correo" formControlName="correo">
+    </mat-form-field>
+  </p>
+  <p *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
+    Campo Requerido
+  </p>
+  
+  <p>
+    <mat-form-field class="fecha">
+        <mat-label>Fecha:</mat-label>
+      <input type="date" class="fecha" matInput placeholder="fecha" formControlName="fecha">
+    </mat-form-field>
+  </p>
+  <p *ngIf="form.controls['fecha'].invalid && (form.controls['fecha'].dirty || form.controls['fecha'].touched)">
+    Campo Requerido
+  </p>
+
+  <p>
+    <mat-form-field class="horaInicio">
+        <mat-label>Hora de inicio:</mat-label>
+      <input type="" class="horaInicio" matInput placeholder="horaInicio" formControlName="horaInicio">
+    </mat-form-field>
+  </p>
+  <p *ngIf="form.controls['horaInicio'].invalid && (form.controls['horaInicio'].dirty || form.controls['horaInicio'].touched)">
+    Campo Requerido
+  </p>
+  
+  <p>
+    <mat-form-field class="horaSalida">
+        <mat-label>Hora de inicio:</mat-label>
+      <input type="" class="horaSalida" matInput placeholder="horaSalida" formControlName="horaSalida">
+    </mat-form-field>
+  </p>
+  <p *ngIf="form.controls['horaSalida'].invalid && (form.controls['horaSalida'].dirty || form.controls['horaSalida'].touched)">
+    Campo Requerido
+  </p>
+
+  <p *ngIf="error" class="error">
+    {{ error }}
+  </p>
+  
+  <div class="button">
+    <button type="submit" mat-button>Enviar</button>
+  </div>
+  
+  </form>
+  <div *ngIf="error">
+    <p>{{ error }}</p>
+  </div>
+  </mat-card-content>
+  </mat-card>

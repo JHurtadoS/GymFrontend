@@ -45,6 +45,5 @@ export class UsuarioCreateFormComponent {
   }
 
   @Input() error: string | null;
-
   @Output() submitEM = new EventEmitter();
 }
