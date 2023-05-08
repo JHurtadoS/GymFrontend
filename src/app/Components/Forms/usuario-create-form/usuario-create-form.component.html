@@ -7,11 +7,17 @@
     <input type="text" matInput placeholder="Correo" formControlName="correo">
   </mat-form-field>
 </p>
+<p *ngIf="form.controls['Correo'].invalid && (form.controls['Correo'].dirty || form.controls['Correo'].touched)">
+  Campo Requerido
+</p>
 
 <p>
   <mat-form-field>
     <input type="password" class="contraseña" matInput placeholder="contraseña" formControlName="contraseña">
   </mat-form-field>
+</p>
+<p *ngIf="form.controls['contraseña'].invalid && (form.controls['contraseña'].dirty || form.controls['contraseña'].touched)">
+  Campo Requerido
 </p>
 
 <p *ngIf="error" class="error">
@@ -19,7 +25,7 @@
 </p>
 
 <div class="button">
-  <button type="submit" mat-button>Post</button>
+  <button type="submit" mat-button>Enviar</button>
 </div>
 
 </form>
