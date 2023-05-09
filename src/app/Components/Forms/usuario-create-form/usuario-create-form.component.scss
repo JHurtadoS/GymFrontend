@@ -1,43 +1,50 @@
+:host {
 
-      :host {
-        display: flex;
-        justify-content: center;
-        margin: 100px 0px;
+  margin: 100px 0px;
 
-      }
-      .mat-mdc-card{
-        min-width: 400px;
-        min-height: 500px;
-      }
+}
 
-      .mat-form-field {
-        width: 100%;
-        min-width: 300px;
-      }
+.mat-mdc-card {
+  min-width: 400px;
+  min-height: 500px;
+}
 
-      .mat-form-field:first-child{
-        margin-top: 20px;
-      }
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
 
-      mat-card-title,
-      mat-card-content {
-        display: flex;
-        justify-content: center;
-        padding-top: 20px;
-      }
+.mat-form-field:first-child {
+  margin-top: 20px;
+}
 
-      .error {
-        padding: 16px;
-        width: 300px;
-        color: white;
-        background-color: red;
-      }
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
 
-      .button {
-        display: flex;
-        justify-content: flex-start;
-        button{padding: 20px;}
-      }
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
 
-form{width: 100%;}
-mat-form-field{width: 100%;}
+.button {
+  display: flex;
+  justify-content: flex-start;
+
+  button {
+    padding: 20px;
+  }
+}
+
+form {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}

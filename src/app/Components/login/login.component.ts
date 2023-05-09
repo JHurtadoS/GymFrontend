@@ -55,9 +55,9 @@ export class LoginComponent {
     }
 
     Swal.fire(
-      'Succes',
+      validationMessage != "La validación fue correcta" ? 'error' : "Succes",
       validationMessage,
-      'success'
+      validationMessage = validationMessage != "La validación fue correcta" ? 'error' : "success"
 
     )
   }
