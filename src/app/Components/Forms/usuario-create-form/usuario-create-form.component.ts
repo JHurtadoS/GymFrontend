@@ -11,19 +11,22 @@ import Swal from 'sweetalert2';
 })
 export class UsuarioCreateFormComponent {
   form: FormGroup = new FormGroup({
-    correo: new FormControl('', [Validators.required, Validators.email]),
-    contraseña: new FormControl('', [Validators.required]),
+    correo: new FormControl(null, [Validators.required]),
+    contraseña: new FormControl(null, [Validators.required]),
   });
 
   constructor(private api: ApiService) { }
 
   submit() {
     let validationMessage: string;
+    const formData = new FormData();
+
     console.log(this.form.value)
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
+      formData.append('correo', this.form.get('nombre').value);
+      formData.append('contraseña', this.form.get('descripcion').value);
       this.api.Post('Usuarios', this.form.value).then(() => {
-        // Éxito en la llamada POST
         this.submitEM.emit();
       }, (error) => {
         // Error en la llamada POST
