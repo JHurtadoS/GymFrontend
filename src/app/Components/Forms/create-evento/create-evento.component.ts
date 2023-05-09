@@ -33,7 +33,7 @@ export class CreateEventoComponent {
       validationMessage = 'Por favor, complete todos los campos';
     }
 
-    validationMessage == "Validacion incorrecta" ? Swal.fire(
+    validationMessage == "Por favor, complete todos los campos" ? Swal.fire(
       'Error',
       'Validacion incorrecta',
       'error'
