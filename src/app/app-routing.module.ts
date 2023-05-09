@@ -33,14 +33,10 @@ const routes: Routes = [
   { path: 'createRutina', component: CreateRutinaComponent, canActivate: [AuthGuard] },
   { path: 'createEjercicio', component: CreateEjerciciosComponent, canActivate: [AuthGuard] },
   { path: 'createHerramienta', component: CreateHerramientaComponent, canActivate: [AuthGuard] },
-
   { path: 'CreateAsistenciaComponent', component: CreateAsistenciaComponent, canActivate: [AuthGuard] },
   { path: 'CreateEventoComponent', component: CreateEventoComponent, canActivate: [AuthGuard] },
   { path: 'CreatePersonaComponent', component: CreatePersonaComponent, canActivate: [AuthGuard] },
-
-
   { path: '', component: NavBarTitleComponent },
-
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: PruebaAdminComponent, canActivate: [AuthGuard] }
 

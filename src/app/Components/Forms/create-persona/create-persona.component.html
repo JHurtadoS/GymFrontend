@@ -1,82 +1,81 @@
+
 <app-menu></app-menu>
+
 <mat-card>
-    <mat-card-title class="title">Formulario persona</mat-card-title>
-    <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="submit()">
-  
-        <mat-form-field class="documento">
-          <mat-label>Documento</mat-label>
-          <input type="number" matInput placeholder="documento" formControlName="documento">
-        </mat-form-field>
-        <p
-          *ngIf="form.controls['documento'].invalid && (form.controls['documento'].dirty || form.controls['documento'].touched)">
-          Error de Validacion
-        </p>
-  
-        <mat-form-field class="nombre">
-          <mat-label>Nombre</mat-label>
-          <input type="text" matInput placeholder="nombre" formControlName="nombre">
-        </mat-form-field>
-        <p *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
-          Error de Validacion
-        </p>
-  
-        <mat-form-field class="apellido">
-          <mat-label>Apellio: </mat-label>
-          <input type="text" matInput placeholder="apellido" formControlName="apellido">
-        </mat-form-field>
-        <p
-          *ngIf="form.controls['apellido'].invalid && (form.controls['apellido'].dirty || form.controls['apellido'].touched)">
-          Error de Validacion
-        </p>
-  
-        <mat-form-field class="celular">
-          <mat-label>Celular:</mat-label>
-          <input type="number" matInput placeholder="celular" formControlName="celular">
-        </mat-form-field>
-        <p
-          *ngIf="form.controls['celular'].invalid && (form.controls['celular'].dirty || form.controls['celular'].touched)">
-          Error de Validacion
-        </p>
-  
-        <mat-form-field class="genero">
-          <mat-label>Genero:</mat-label>
-          <input type="text" matInput placeholder="genero" formControlName="genero">
-        </mat-form-field>
-        <p
-          *ngIf="form.controls['genero'].invalid && (form.controls['genero'].dirty || form.controls['genero'].touched)">
-          Error de Validacion
-        </p>
-  
-        <mat-form-field class="rh">
-          <mat-label>Rh:</mat-label>
-          <input type="text" matInput placeholder="rh" formControlName="rh">
-        </mat-form-field>
-        <p
-          *ngIf="form.controls['rh'].invalid && (form.controls['rh'].dirty || form.controls['rh'].touched)">
-          Error de Validacion
-        </p>
-  
-        <mat-form-field class="rol">
-          <mat-label>Rol:</mat-label>
-          <input type="text" matInput placeholder="rol" formControlName="rol">
-        </mat-form-field>
-        <p
-          *ngIf="form.controls['rol'].invalid && (form.controls['rol'].dirty || form.controls['rol'].touched)">
-          Error de Validacion
-        </p>
-  
-        <p *ngIf="error" class="error">
-          {{ error }}
-        </p>
-  
-        <div class="button">
-          <button type="submit" mat-button>Enviar</button>
-        </div>
-  
-      </form>
-      <div *ngIf="error">
-        <p>{{ error }}</p>
+  <mat-card-title class="title">Formulario persona</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <mat-form-field class="documento">
+        <mat-label>Documento</mat-label>
+        <input type="number" matInput placeholder="documento" formControlName="documento">
+      </mat-form-field>
+      <p
+        *ngIf="form.controls['documento'].invalid && (form.controls['documento'].dirty || form.controls['documento'].touched)">
+        Error de Validacion
+      </p>
+
+      <mat-form-field class="nombre">
+        <mat-label>Nombre</mat-label>
+        <input type="text" matInput placeholder="nombre" formControlName="nombre">
+      </mat-form-field>
+      <p *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
+        Error de Validacion
+      </p>
+
+      <mat-form-field class="apellido">
+        <mat-label>Apellio: </mat-label>
+        <input type="text" matInput placeholder="apellido" formControlName="apellido">
+      </mat-form-field>
+      <p
+        *ngIf="form.controls['apellido'].invalid && (form.controls['apellido'].dirty || form.controls['apellido'].touched)">
+        Error de Validacion
+      </p>
+
+      <mat-form-field class="celular">
+        <mat-label>Celular:</mat-label>
+        <input type="number" matInput placeholder="celular" formControlName="celular">
+      </mat-form-field>
+      <p
+        *ngIf="form.controls['celular'].invalid && (form.controls['celular'].dirty || form.controls['celular'].touched)">
+        Error de Validacion
+      </p>
+
+      <mat-form-field class="genero">
+        <mat-label>Genero:</mat-label>
+        <input type="text" matInput placeholder="genero" formControlName="genero">
+      </mat-form-field>
+      <p *ngIf="form.controls['genero'].invalid && (form.controls['genero'].dirty || form.controls['genero'].touched)">
+        Error de Validacion
+      </p>
+
+      <mat-form-field class="rh">
+        <mat-label>Rh:</mat-label>
+        <input type="text" matInput placeholder="rh" formControlName="rh">
+      </mat-form-field>
+      <p *ngIf="form.controls['rh'].invalid && (form.controls['rh'].dirty || form.controls['rh'].touched)">
+        Error de Validacion
+      </p>
+
+      <mat-form-field class="rol">
+        <mat-label>Rol:</mat-label>
+        <input type="text" matInput placeholder="rol" formControlName="rol">
+      </mat-form-field>
+      <p *ngIf="form.controls['rol'].invalid && (form.controls['rol'].dirty || form.controls['rol'].touched)">
+        Error de Validacion
+      </p>
+
+      <p *ngIf="error" class="error">
+        {{ error }}
+      </p>
+
+      <div class="button">
+        <button type="submit" mat-button>Enviar</button>
       </div>
-    </mat-card-content>
-  </mat-card>
+
+    </form>
+    <div *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

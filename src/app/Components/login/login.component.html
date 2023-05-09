@@ -11,11 +11,19 @@
             <input type="text" matInput placeholder="Correo" formControlName="correo">
           </mat-form-field>
         </p>
+        <p
+          *ngIf="form.controls['correo'].invalid && (form.controls['correo'].dirty || form.controls['correo'].touched)">
+          Campo Requerido
+        </p>
 
         <p>
           <mat-form-field>
             <input type="password" class="contraseña" matInput placeholder="contraseña" formControlName="contraseña">
           </mat-form-field>
+        </p>
+        <p
+          *ngIf="form.controls['contraseña'].invalid && (form.controls['contraseña'].dirty || form.controls['contraseña'].touched)">
+          Campo Requerido
         </p>
 
         <p *ngIf="error" class="error">
