@@ -37,8 +37,6 @@ export class CreateEjerciciosComponent implements OnInit {
     ejercicioIdHerramienta: new FormControl(null, [Validators.required]),
   }
 
-
-
   );
 
   ngOnInit(): void {
@@ -62,7 +60,7 @@ export class CreateEjerciciosComponent implements OnInit {
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
       this.api.Post('Ejercicios', this.form.value).then(() => {
-        // Éxito en la llamada POST
+         // Éxito en la llamada POST
         this.submitEM.emit();
       }, (error) => {
         // Error en la llamada POST
@@ -71,7 +69,6 @@ export class CreateEjerciciosComponent implements OnInit {
     } else {
       validationMessage = 'Validacion incorrecta';
     }
-
 
     validationMessage == "Validacion incorrecta" ? Swal.fire(
       'Error',
@@ -82,11 +79,9 @@ export class CreateEjerciciosComponent implements OnInit {
       'Validacion Correcta',
       'success'
     )
-
   }
 
   @Input() error: string | null;
 
   @Output() submitEM = new EventEmitter();
 }
-
