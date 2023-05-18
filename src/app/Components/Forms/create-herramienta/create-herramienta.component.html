@@ -1,0 +1,49 @@
+<app-menu>
+</app-menu>
+
+<mat-card>
+  <mat-card-title class="title">Post</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <mat-form-field class="nombre">
+        <mat-label>Descripcion</mat-label>
+        <input type="text" matInput placeholder="Descripcion" formControlName="descripcion">
+      </mat-form-field>
+
+      <p
+        *ngIf="form.controls['descripcion'].invalid && (form.controls['descripcion'].dirty || form.controls['descripcion'].touched)">
+        Error de Validacion
+      </p>
+
+
+      <mat-form-field class="nombre">
+        <mat-label>Nombre</mat-label>
+        <input type="text" matInput placeholder="nombre" formControlName="nombre">
+      </mat-form-field>
+
+      <p *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
+        Error de Validacion
+      </p>
+
+      <input type="file" (change)="onFileSelected($event)" formControlName="imagenAsociada"
+        accept="image/jpeg,image/png">
+
+
+
+
+
+      <p *ngIf="error" class="error">
+        {{ error }}
+      </p>
+
+      <div class="button">
+        <button type="submit" mat-button>Post</button>
+      </div>
+
+    </form>
+    <div *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,51 @@
+:host {
+  display: block;
+}
+
+.mat-mdc-card {
+
+  width: 400px;
+  height: 500px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+.mat-form-field:first-child {
+  margin-top: 20px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-start;
+
+  button {
+    padding: 20px;
+  }
+}
+
+form {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
