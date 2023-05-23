@@ -1,9 +1,11 @@
-import { ChangeDetectionStrategy, Input, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Input, NgModule, SimpleChanges } from '@angular/core';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-tabla',
@@ -16,14 +18,34 @@ export class TablaComponent implements AfterViewInit {
   @Input() dataSource: MatTableDataSource<any>;
   displayedColumns: string[];
   @Input() data: any[]
-
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public api: ApiService) {
+
+  constructor(public api: ApiService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource();
   }
+
+  updateElement(element: any) {
+
+    console.log('Elemento a actualizar:', element);
+    const dialogRef = this.dialog.open(dialogUpdate);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  deleteElement(element: any) {
+    // Lógica para eliminar el elemento
+    console.log('Elemento eliminar:', element);
+
+    const dialogRef = this.dialog.open(dialogDelete);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -44,6 +66,7 @@ export class TablaComponent implements AfterViewInit {
     for (let nombre of Object.keys(objeto)) {
       this.displayedColumns.push(nombre);
     }
+    this.displayedColumns.push('acciones')
   }
 
   applyFilter(event: Event) {
@@ -54,4 +77,40 @@ export class TablaComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+
+
 }
+
+@Component({
+  selector: 'dialogDelete',
+  template: `<h1 mat-dialog-title>Delete</h1>
+<div mat-dialog-content>
+  <p>Are you sure you want to delete?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">No</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Yes</button>
+</div>`,
+})
+
+export class dialogDelete { }
+
+
+@Component({
+  selector: 'dialogUpdate',
+  template: `<h1 mat-dialog-title>Update</h1>
+<div mat-dialog-content>
+  <input type="text" matInput placeholder="Prueba 1" formControlName="correo">
+  <input type="text" matInput placeholder="Prueba 2" formControlName="correo">
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">No</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+</div>`,
+})
+
+export class dialogUpdate { }
+
+
+

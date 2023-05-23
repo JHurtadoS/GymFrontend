@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Update</h1>
+<div mat-dialog-content>
+  <input type="text" matInput placeholder="Prueba 1" formControlName="correo">
+  <input type="text" matInput placeholder="Prueba 2" formControlName="correo">
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">No</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+</div>
