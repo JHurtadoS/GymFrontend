@@ -42,7 +42,6 @@ export class CreateAsistenciaComponent {
     }
   
     @Input() error: string | null;
-  
     @Output() submitEM = new EventEmitter();
   }
   

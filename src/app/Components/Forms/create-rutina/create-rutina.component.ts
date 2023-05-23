@@ -32,6 +32,7 @@ export class CreateRutinaComponent {
       validationMessage = 'Validacion incorrecta';
     }
 
+
     validationMessage == "Validacion incorrecta" ? Swal.fire(
       'Error',
       'Validacion incorrecta',

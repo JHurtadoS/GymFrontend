@@ -44,6 +44,7 @@ export class TablaComponent implements AfterViewInit {
     for (let nombre of Object.keys(objeto)) {
       this.displayedColumns.push(nombre);
     }
+    this.displayedColumns.push('acciones')
   }
 
   applyFilter(event: Event) {
