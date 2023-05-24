@@ -40,8 +40,18 @@ export class CreateAsistenciaComponent {
         'success'
       )
     }
-  
-    @Input() error: string | null;
-    @Output() submitEM = new EventEmitter();
+
+    validationMessage == "Por favor, complete todos los campos" ? Swal.fire(
+      'Error',
+      'Validacion incorrecta',
+      'error'
+    ) : Swal.fire(
+      'Succes',
+      'Validacion Correcta',
+      'success'
+    )
   }
-  
+
+  @Input() error: string | null;
+  @Output() submitEM = new EventEmitter();
+}

@@ -49,6 +49,7 @@ export class CreateEjerciciosComponent implements OnInit {
   public async GetHerramienta() {
     this.api.Get('Herramientums').then((res: Array<Herramienta>) => {
       this.dataHerramientas = res;
+      console.log(this.dataHerramientas)
     });
   }
 

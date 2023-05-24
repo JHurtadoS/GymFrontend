@@ -36,7 +36,7 @@ export class UsuarioCreateFormComponent {
       validationMessage = 'Validacion incorrecta';
     }
 
-    validationMessage == "Validacion incorrecta" ? Swal.fire(
+    validationMessage == "Por favor, complete todos los campos" ? Swal.fire(
       'Error',
       'Validacion incorrecta',
       'error'
