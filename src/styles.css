@@ -1,3 +1,6 @@
   .mat-sort-header-container {
     justify-content: center !important;
   }
+  .mat-mdc-unelevated-button>.mat-icon, .mat-mdc-raised-button>.mat-icon, .mat-mdc-outlined-button>.mat-icon{
+    margin: 0 auto!important;
+  }

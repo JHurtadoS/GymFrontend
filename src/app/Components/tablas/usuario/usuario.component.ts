@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
+import { UsuarioCreateFormComponent } from '../../Forms/usuario-create-form/usuario-create-form.component';
 
 @Component({
   selector: 'app-usuario',
@@ -12,6 +13,7 @@ import { ApiService } from 'src/app/Services/api.service';
 export class UsuarioComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   data: any[]
+  component:any
 
   constructor(public api: ApiService) {
     this.dataSource = new MatTableDataSource();
@@ -26,6 +28,7 @@ export class UsuarioComponent implements OnInit {
       this.dataSource.data = res;
       this.data = res
     });
+    this.component=UsuarioCreateFormComponent
   }
 }
 
