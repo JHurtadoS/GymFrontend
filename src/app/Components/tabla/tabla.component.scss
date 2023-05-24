@@ -1,0 +1,27 @@
+td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-acciones.mat-column-acciones {
+
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+td {
+  padding: 20px 0;
+
+  span {
+    display: block;
+    text-align: center;
+  }
+}
+
+button {
+  max-width: 130px;
+  width: 90%;
+
+  &:first-of-type {
+    margin-bottom: 10px;
+  }
+
+}

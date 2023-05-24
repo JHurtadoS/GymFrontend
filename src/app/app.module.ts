@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 //import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { MatSortModule } from '@angular/material/sort';
 import { MenuComponent } from './Components/menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -40,7 +42,7 @@ import { PruebaAdminComponent } from './components/prueba-admin/prueba-admin.com
 import { AuthGuard } from './guards/auth.guard';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/app.reducer';
-import { TablaComponent } from './Components/tabla/tabla.component';
+import { TablaComponent, dialogDelete, dialogUpdate } from './Components/tabla/tabla.component';
 import { NavBarTitleComponent } from './components/nav-bar-title/nav-bar-title.component';
 import { CreateAsistenciaComponent } from './Components/Forms/create-asistencia/create-asistencia.component';
 import { CreateEventoComponent } from './Components/Forms/create-evento/create-evento.component';
@@ -62,6 +64,8 @@ import { CreatePersonaComponent } from './Components/Forms/create-persona/create
     LoginComponent,
     RutinaComponent,
     MenuComponent,
+    dialogUpdate,
+    dialogDelete,
     CreateRutinaComponent,
     CreateEjerciciosComponent,
     CreateHerramientaComponent,
@@ -85,6 +89,7 @@ import { CreatePersonaComponent } from './Components/Forms/create-persona/create
     MatCardModule,
     MatTableModule,
     MatInputModule,
+    MatDialogModule,
     ReactiveFormsModule,
     MatPaginatorModule,
     MatSortModule,
