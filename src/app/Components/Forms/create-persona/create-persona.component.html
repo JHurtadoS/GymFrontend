@@ -13,12 +13,18 @@
       <p
         *ngIf="form.controls['documento'].invalid && (form.controls['documento'].dirty || form.controls['documento'].touched)">
         Error de Validacion
-      </p>
+        </mat-error>
+        </mat-form-field>
+
 
       <p>
         <mat-form-field class="nombre">
           <mat-label>Nombre</mat-label>
           <input type="text" matInput placeholder="nombre" formControlName="nombre">
+          <mat-error
+            *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
+            Error de Validacion
+          </mat-error>
         </mat-form-field>
       </p>
       <p *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
@@ -45,13 +51,19 @@
       <p
         *ngIf="form.controls['celular'].invalid && (form.controls['celular'].dirty || form.controls['celular'].touched)">
         Error de Validacion
-      </p>
+        </mat-error>
+        </mat-form-field>
+
 
       <p>
         <mat-form-field class="genero">
-          <mat-label>Genero:</mat-label>
           <input type="text" matInput placeholder="genero" formControlName="genero">
+          <mat-error
+            *ngIf="form.controls['genero'].invalid && (form.controls['genero'].dirty || form.controls['genero'].touched)">
+            Error de Validacion
+          </mat-error>
         </mat-form-field>
+
       </p>
       <p *ngIf="form.controls['genero'].invalid && (form.controls['genero'].dirty || form.controls['genero'].touched)">
         Error de Validacion
@@ -59,18 +71,20 @@
 
       <p>
         <mat-form-field class="rh">
-          <mat-label>Rh:</mat-label>
           <input type="text" matInput placeholder="rh" formControlName="rh">
+          <mat-error *ngIf="form.controls['rh'].invalid && (form.controls['rh'].dirty || form.controls['rh'].touched)">
+            Error de Validacion
+          </mat-error>
         </mat-form-field>
+
       </p>
       <p *ngIf="form.controls['rh'].invalid && (form.controls['rh'].dirty || form.controls['rh'].touched)">
         Error de Validacion
       </p>
 
       <p>
-        <mat-form-field class="rol">
-          <mat-label>Rol:</mat-label>
-          <input type="text" matInput placeholder="rol" formControlName="rol">
+        Error de Validacion
+        </mat-error>
         </mat-form-field>
       </p>
       <p *ngIf="form.controls['rol'].invalid && (form.controls['rol'].dirty || form.controls['rol'].touched)">
@@ -82,12 +96,8 @@
       </p>
 
       <div class="button">
-        <button type="submit" mat-button>Enviar</button>
-      </div>
-
     </form>
     <div *ngIf="error">
       <p>{{ error }}</p>
     </div>
-  </mat-card-content>
 </mat-card>

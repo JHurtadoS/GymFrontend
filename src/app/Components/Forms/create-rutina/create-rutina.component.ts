@@ -12,9 +12,7 @@ export class CreateRutinaComponent {
   form: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.max(80)]),
     tipRutina: new FormControl('', [Validators.required, Validators.max(80)]),
-  }
-
-  );
+  });
 
   constructor(private api: ApiService) { }
 
@@ -33,6 +31,7 @@ export class CreateRutinaComponent {
     } else {
       validationMessage = 'Validacion incorrecta';
     }
+
 
     validationMessage == "Validacion incorrecta" ? Swal.fire(
       'Error',

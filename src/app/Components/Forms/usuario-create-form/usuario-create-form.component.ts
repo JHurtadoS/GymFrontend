@@ -24,16 +24,16 @@ export class UsuarioCreateFormComponent {
     console.log(this.form.value)
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
-      formData.append('correo', this.form.get('nombre').value);
-      formData.append('contraseña', this.form.get('descripcion').value);
+      validationMessage = 'La validación fue correcta';
       this.api.Post('Usuarios', this.form.value).then(() => {
+        // Éxito en la llamada POST
         this.submitEM.emit();
       }, (error) => {
         // Error en la llamada POST
         this.error = error.message;
       });
     } else {
-      validationMessage = 'Por favor, complete todos los campos';
+      validationMessage = 'Validacion incorrecta';
     }
 
     validationMessage == "Por favor, complete todos los campos" ? Swal.fire(
@@ -48,5 +48,6 @@ export class UsuarioCreateFormComponent {
   }
 
   @Input() error: string | null;
+
   @Output() submitEM = new EventEmitter();
 }
