@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
+import { CreateEjerciciosComponent } from '../../Forms/create-ejercicios/create-ejercicios.component';
 
 @Component({
   selector: 'app-ejercicios',
@@ -12,6 +13,7 @@ import { ApiService } from 'src/app/Services/api.service';
 export class EjerciciosComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   data: any[]
+  component:any
 
   constructor(public api: ApiService) {
     this.dataSource = new MatTableDataSource();
@@ -26,5 +28,7 @@ export class EjerciciosComponent implements OnInit {
       this.dataSource.data = res;
       this.data = res
     });
+    this.component=CreateEjerciciosComponent
+
   }
 }

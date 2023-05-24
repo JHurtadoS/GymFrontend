@@ -7,8 +7,14 @@
   <table mat-table [dataSource]="dataSource" matSort>
 
     <ng-container matColumnDef="{{disCol}}" *ngFor="let disCol of displayedColumns">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{disCol}}</th>
-      <td mat-cell *matCellDef="let element">{{element[disCol]}}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="header"><span> {{disCol}}</span></th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="disCol !== 'acciones'"><span> {{element[disCol]}}</span></ng-container>
+        <ng-container *ngIf="disCol === 'acciones'" id="botones">
+          <button mat-raised-button color="warn" (click)="deleteElement(element)"><mat-icon >delete</mat-icon></button>
+          <button mat-raised-button color="accent" (click)="updateElement(element)"><mat-icon >update</mat-icon></button>
+        </ng-container>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

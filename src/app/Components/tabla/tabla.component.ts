@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { CreatePersonaComponent } from '../Forms/create-persona/create-persona.component';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class TablaComponent implements AfterViewInit {
   @Input() dataSource: MatTableDataSource<any>;
   displayedColumns: string[];
   @Input() data: any[]
+  @Input() component: any
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -28,11 +30,8 @@ export class TablaComponent implements AfterViewInit {
 
   updateElement(element: any) {
 
-    console.log('Elemento a actualizar:', element);
-    const dialogRef = this.dialog.open(dialogUpdate);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+
+    this.dialog.open(this.component)
   }
 
   deleteElement(element: any) {
