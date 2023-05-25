@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
+import { FormsService } from 'src/app/services/forms.service';
 import Swal from 'sweetalert2';
 
 
@@ -9,13 +10,21 @@ import Swal from 'sweetalert2';
   templateUrl: './usuario-create-form.component.html',
   styleUrls: ['./usuario-create-form.component.scss']
 })
-export class UsuarioCreateFormComponent {
+export class UsuarioCreateFormComponent implements OnInit {
   form: FormGroup = new FormGroup({
     correo: new FormControl(null, [Validators.required]),
     contraseña: new FormControl(null, [Validators.required]),
   });
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, public forms:FormsService) {}
+
+  ngOnInit(): void {
+    this.forms.element.subscribe((res: any)=>{
+      if(res!=null){
+        this.form.setControl('correo', new FormControl(res.correo));
+      }
+    })
+  }
 
   submit() {
     let validationMessage: string;

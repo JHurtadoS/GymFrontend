@@ -1,13 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
+import { FormsService } from 'src/app/services/forms.service';
 import Swal from 'sweetalert2';
 
 @Component({
   templateUrl: './create-persona.component.html',
   styleUrls: ['./create-persona.component.scss']
 })
-export class CreatePersonaComponent {
+export class CreatePersonaComponent implements OnInit{
   form: FormGroup = new FormGroup({
     documento: new FormControl('', [Validators.required]),
     apellido: new FormControl('', [Validators.required, Validators.max(80)]),
@@ -18,7 +19,20 @@ export class CreatePersonaComponent {
     rol: new FormControl('', [Validators.required, Validators.max(80)]),
   });
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, public forms:FormsService) { }
+  ngOnInit(): void {
+    this.forms.element.subscribe((res: any)=>{
+      if(res!=null){
+        this.form.setControl('documento', new FormControl(res.documento));
+        this.form.setControl('apellido', new FormControl(res.apellido));
+        this.form.setControl('nombre', new FormControl(res.nombre));
+        this.form.setControl('celular', new FormControl(res.celular));
+        this.form.setControl('genero', new FormControl(res.genero));
+        this.form.setControl('rh', new FormControl(res.rh));
+        this.form.setControl('rol', new FormControl(res.rol));
+      }
+    })
+  }
 
   submit() {
     let validationMessage: string;

@@ -24,7 +24,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   public async GetAsistencia() {
-    this.api.Get('Personas').then((res) => {
+    this.api.Get('Usuarios').then((res) => {
       this.dataSource.data = res;
       this.data = res
     });

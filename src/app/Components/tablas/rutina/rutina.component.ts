@@ -26,7 +26,7 @@ export class RutinaComponent implements OnInit {
   }
 
   public async GetAsistencia() {
-    this.api.Get('Personas').then((res) => {
+    this.api.Get('Rutinas').then((res) => {
       this.dataSource.data = res;
       this.data = res
     });

@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
+import { FormsService } from 'src/app/services/forms.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,7 +9,7 @@ import Swal from 'sweetalert2';
   selector: 'app-create-rutina',
   styleUrls: ['./create-rutina.component.scss']
 })
-export class CreateRutinaComponent {
+export class CreateRutinaComponent implements OnInit{
   form: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.max(80)]),
     tipRutina: new FormControl('', [Validators.required, Validators.max(80)]),
@@ -16,7 +17,16 @@ export class CreateRutinaComponent {
 
   );
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, public forms:FormsService) { }
+
+  ngOnInit(): void {
+    this.forms.element.subscribe((res: any)=>{
+      if(res!=null){
+        this.form.setControl('tipRutina', new FormControl(res.tipRutina));
+        this.form.setControl('nombre', new FormControl(res.nombre));
+      }
+    })
+  }
 
   submit() {
     let validationMessage: string;

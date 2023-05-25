@@ -9,12 +9,13 @@
       <mat-form-field class="nombre">
         <mat-label>Descripcion</mat-label>
         <input type="text" matInput placeholder="Descripcion" formControlName="descripcion">
-      </mat-form-field>
-
-      <p
+        <mat-error
         *ngIf="form.controls['descripcion'].invalid && (form.controls['descripcion'].dirty || form.controls['descripcion'].touched)">
         Error de Validacion
-      </p>
+      </mat-error>
+      </mat-form-field>
+
+      
 
 
       <mat-form-field class="nombre">

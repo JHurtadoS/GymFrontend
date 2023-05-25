@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CreatePersonaComponent } from '../Forms/create-persona/create-persona.component';
+import { FormGroup } from '@angular/forms';
+import { FormsService } from 'src/app/services/forms.service';
 
 
 @Component({
@@ -24,13 +26,12 @@ export class TablaComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor(public api: ApiService, public dialog: MatDialog) {
+  constructor(public api: ApiService, public dialog: MatDialog, public forms:FormsService) {
     this.dataSource = new MatTableDataSource();
   }
 
   updateElement(element: any) {
-
-
+    this.forms.element.next(element)
     this.dialog.open(this.component)
   }
 
@@ -41,6 +42,8 @@ export class TablaComponent implements AfterViewInit {
     const dialogRef = this.dialog.open(dialogDelete);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.api.Delete(this.component, result.idUsuario)
+      window.location.reload();
     });
   }
 
