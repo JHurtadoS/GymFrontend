@@ -42,7 +42,7 @@ export class TablaComponent implements AfterViewInit {
     const dialogRef = this.dialog.open(dialogDelete);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-      this.api.Delete(this.component, result.idUsuario)
+      this.api.Delete(this.component, element.id)
       window.location.reload();
     });
   }
