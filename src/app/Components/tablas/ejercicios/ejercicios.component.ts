@@ -14,7 +14,7 @@ export class EjerciciosComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   data: any[]
   component:any
-
+  
   constructor(public api: ApiService) {
     this.dataSource = new MatTableDataSource();
   }

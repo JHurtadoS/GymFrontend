@@ -8,6 +8,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CreatePersonaComponent } from '../Forms/create-persona/create-persona.component';
 import { FormGroup } from '@angular/forms';
 import { FormsService } from 'src/app/services/forms.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -39,13 +40,25 @@ export class TablaComponent implements AfterViewInit {
     // Lógica para eliminar el elemento
     console.log('Elemento eliminar:', element);
 
-    const dialogRef = this.dialog.open(dialogDelete);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-      this.api.Delete(this.component, element.id)
-      window.location.reload();
-    });
-  }
+    Swal.fire({
+      title: '¿Seguro que quiere eliminar este res?',
+      
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+      
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Saved!', '', 'success')
+        this.api.Delete('Asistemcius',element.id)
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
+  
+    }
+    
+  
 
 
 

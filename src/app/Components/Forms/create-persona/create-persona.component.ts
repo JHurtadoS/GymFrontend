@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class CreatePersonaComponent implements OnInit{
   form: FormGroup = new FormGroup({
     documento: new FormControl('', [Validators.required]),
-    apellido: new FormControl('', [Validators.required, Validators.max(80)]),
+    apellidos: new FormControl('', [Validators.required, Validators.max(80)]),
     nombre: new FormControl('', [Validators.required, Validators.max(80)]),
     celular: new FormControl('', [Validators.required, Validators.max(80)]),
     genero: new FormControl('', [Validators.required, Validators.max(9999999)]),
@@ -24,7 +24,7 @@ export class CreatePersonaComponent implements OnInit{
     this.forms.element.subscribe((res: any)=>{
       if(res!=null){
         this.form.setControl('documento', new FormControl(res.documento));
-        this.form.setControl('apellido', new FormControl(res.apellido));
+        this.form.setControl('apellidos', new FormControl(res.apellidos));
         this.form.setControl('nombre', new FormControl(res.nombre));
         this.form.setControl('celular', new FormControl(res.celular));
         this.form.setControl('genero', new FormControl(res.genero));
@@ -33,34 +33,33 @@ export class CreatePersonaComponent implements OnInit{
       }
     })
   }
-
   submit() {
     let validationMessage: string;
-    console.log(this.form)
+    console.log(this.form.value)
     if (this.form.valid) {
-      console.log("hola2")
       validationMessage = 'La validación fue correcta';
       this.api.Post('Personas', this.form.value).then(() => {
-         // Éxito en la llamada POST
-         this.submitEM.emit();
-        }, (error) => {
-          // Error en la llamada POST
-          this.error = error.message;
-        });
-      } else {
-        validationMessage = 'Validacion incorrecta';
-      }
-  
-      validationMessage == "Validacion incorrecta" ? Swal.fire(
-        'Error',
-        'Validacion incorrecta',
-        'error'
-      ) : Swal.fire(
-        'Succes',
-        'Validacion Correcta',
-        'success'
-      )
-    }
+        // Éxito en la llamada POST
+        this.submitEM.emit();
+       }, (error) => {
+         // Error en la llamada POST
+         this.error = error.message;
+       });
+     } else {
+       validationMessage = 'Validacion incorrecta';
+     }
+ 
+     validationMessage == "Validacion incorrecta" ? Swal.fire(
+       'Error',
+       'Validacion incorrecta',
+       'error'
+     ) : Swal.fire(
+       'Succes',
+       'Validacion Correcta',
+       'success'
+     )
+   }
+ 
   
     @Input() error: string | null;
   

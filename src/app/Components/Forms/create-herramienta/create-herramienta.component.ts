@@ -11,7 +11,6 @@ import Swal from 'sweetalert2';
 export class CreateHerramientaComponent implements OnInit {
   form: FormGroup = new FormGroup({
     nombre: new FormControl(null, [Validators.required, Validators.max(80)]),
-    descripcion: new FormControl(null, [Validators.required, Validators.max(80)]),
     imagenAsociada: new FormControl(null, [Validators.required]),
   });
 
@@ -20,7 +19,7 @@ export class CreateHerramientaComponent implements OnInit {
     this.forms.element.subscribe((res: any)=>{
       if(res!=null){
         this.form.setControl('nombre', new FormControl(res.nombre));
-        this.form.setControl('descripcion', new FormControl(res.descripcion));
+        this.form.setControl('imagenAsociada', new FormControl(res.imagenAsociada));
       }
     })
   }
@@ -31,7 +30,6 @@ export class CreateHerramientaComponent implements OnInit {
       validationMessage = 'La validación fue correcta';
       const formData = new FormData();
       formData.append('nombre', this.form.get('nombre').value);
-      formData.append('descripcion', this.form.get('descripcion').value);
       formData.append('imagenAsociada', this.form.get('imagenAsociada').value);
       console.log(formData.getAll("imagenAsociada"))
       this.api.Post('herramientums', formData).then(() => {

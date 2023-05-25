@@ -7,18 +7,18 @@
           <mat-label>Nombre:</mat-label>
           <input type="text" matInput placeholder="Correo" formControlName="nombre">
           <mat-error *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
-            Campo Requerido
+            Complete el campo
           </mat-error>
         </mat-form-field>
       </p>
       
 
       <p>
-        <mat-form-field class="fecha">
+        <mat-form-field>
           <mat-label>Fecha:</mat-label>
-          <input type="date" class="fecha" matInput placeholder="fecha" formControlName="fecha">
+          <input type="datetime" class="fecha" matInput placeholder="fecha" formControlName="fecha">
           <mat-error *ngIf="form.controls['fecha'].invalid && (form.controls['fecha'].dirty || form.controls['fecha'].touched)">
-            Campo Requerido
+            Complete el campo
           </mat-error>
         </mat-form-field>
       </p>
@@ -27,10 +27,10 @@
       <p>
         <mat-form-field class="horaInicio">
           <mat-label>Hora de inicio:</mat-label>
-          <input type="" class="horaInicio" matInput placeholder="horaInicio" formControlName="horaInicio">
+          <input type="time" class="horaInicio" matInput placeholder="horaInicio" formControlName="horaInicio">
           <mat-error
         *ngIf="form.controls['horaInicio'].invalid && (form.controls['horaInicio'].dirty || form.controls['horaInicio'].touched)">
-        Campo Requerido
+        Complete el campo
     </mat-error>
         </mat-form-field>
       </p>
@@ -39,10 +39,10 @@
       <p>
         <mat-form-field class="horaSalida">
           <mat-label>Hora de inicio:</mat-label>
-          <input type="" class="horaSalida" matInput placeholder="horaSalida" formControlName="horaSalida">
+          <input type="time" class="horaSalida" matInput placeholder="horaSalida" formControlName="horaSalida">
           <mat-error
         *ngIf="form.controls['horaSalida'].invalid && (form.controls['horaSalida'].dirty || form.controls['horaSalida'].touched)">
-        Campo Requerido
+        Complete el campo
       </mat-error>
         </mat-form-field>
       </p>

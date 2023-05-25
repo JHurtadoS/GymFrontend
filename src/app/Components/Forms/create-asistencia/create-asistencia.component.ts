@@ -1,18 +1,27 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
+import { FormsService } from 'src/app/services/forms.service';
 import Swal from 'sweetalert2';
 
 @Component({
   templateUrl: './create-asistencia.component.html',
   styleUrls: ['./create-asistencia.component.scss']
 })
-export class CreateAsistenciaComponent {
+export class CreateAsistenciaComponent implements OnInit{
   form: FormGroup = new FormGroup({
     fechaHora: new FormControl('', [Validators.required]),
   });
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, public forms:FormsService) { }
+  ngOnInit(): void {
+    this.forms.element.subscribe((res: any)=>{
+      if(res!=null){
+        this.form.setControl('fechaHora', new FormControl(res.fechaHora));
+      }
+    })
+  }
+
 
   submit() {
     let validationMessage: string;

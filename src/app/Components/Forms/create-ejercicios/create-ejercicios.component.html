@@ -2,12 +2,13 @@
   <mat-card-title class="title">Formulario Ejercicios</mat-card-title>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="submit()">
+      
       <mat-form-field>
         <mat-label>Video Asociado</mat-label>
         <input type="text" matInput formControlName="videoAsociado">
         <mat-error
         *ngIf="form.controls['videoAsociado'].invalid && (form.controls['videoAsociado'].dirty || form.controls['videoAsociado'].touched)">
-        Error de Validacion
+        Complete el campo
       </mat-error>
       </mat-form-field>
     
@@ -15,7 +16,7 @@
         <mat-label>Nombre</mat-label>
         <input type="text" matInput formControlName="nombre">
         <mat-error *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
-          Error de Validacion
+          Complete el campo
         </mat-error>
       </mat-form-field>
       
@@ -27,18 +28,21 @@
           <mat-option value="espalda">Espalda</mat-option>
         </mat-select>
         <input matInput formControlName="tipo">
+        <mat-error *ngIf="form.controls['tipo'].invalid && (form.controls['tipo'].dirty || form.controls['tipo'].touched)">
+          Complete el campo
+        </mat-error>
       </mat-form-field>
-      <mat-error *ngIf="form.controls['tipo'].invalid && (form.controls['tipo'].dirty || form.controls['tipo'].touched)">
-        Error de Validacion
-      </mat-error>
+     
+
       <mat-form-field>
         <mat-label>Número de calorías</mat-label>
         <input type="number" matInput formControlName="ncalorias">
-      </mat-form-field>
-      <mat-error
+        <mat-error
         *ngIf="form.controls['ncalorias'].invalid && (form.controls['ncalorias'].dirty || form.controls['ncalorias'].touched)">
-        Error de Validacion
+        Complete el campo
     </mat-error>
+      </mat-form-field>
+      
       <mat-form-field>
         <mat-label>Maquina</mat-label>
         <mat-select formControlName="maquina">
@@ -48,7 +52,7 @@
         </mat-select>
         <mat-error
         *ngIf="form.controls['maquina'].invalid && (form.controls['maquina'].dirty || form.controls['maquina'].touched)">
-        Error de Validacion
+        Seleccione una opcion
     </mat-error>
       </mat-form-field>
 
@@ -57,14 +61,13 @@
         <mat-select formControlName="ejercicioIdHerramienta">
           <mat-option *ngFor="let option of dataHerramientas" [value]="option.id">
             {{option.nombre}}
+            <mat-error
+        *ngIf="form.controls['ejercicioIdHerramienta'].invalid && (form.controls['ejercicioIdHerramienta'].dirty || form.controls['ejercicioIdHerramienta'].touched)">
+        Complete el campo
+    </mat-error>
           </mat-option>
         </mat-select>
       </mat-form-field>-->
-
-      <mat-error
-        *ngIf="form.controls['ejercicioIdHerramienta'].invalid && (form.controls['ejercicioIdHerramienta'].dirty || form.controls['ejercicioIdHerramienta'].touched)">
-        Error de Validacion
-    </mat-error>
 
       <p *ngIf="error" class="error">
         {{ error }}
