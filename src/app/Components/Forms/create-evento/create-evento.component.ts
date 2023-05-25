@@ -34,39 +34,30 @@ export class CreateEventoComponent implements OnInit{
       validationMessage = 'La validación fue correcta';
       this.api.Post('Eventoes', this.form.value).then(() => {
         // Éxito en la llamada POST
-          // Éxito en la llamada POST
-          this.submitEM.emit();
-        }, (error) => {
-          // Error en la llamada POST
-          this.error = error.message;
-        });
-      } else {
-        validationMessage = 'Validacion incorrecta';
-      }
-  
-      validationMessage == "Validacion incorrecta" ? Swal.fire(
-        'Error',
-        'Validacion incorrecta',
-        'error'
-      ) : Swal.fire(
-        'Succes',
-        'Validacion Correcta',
-        'success'
-      )
-    }
+        this.submitEM.emit();
+       }, (error) => {
+         // Error en la llamada POST
+         this.error = error.message;
+       });
+     } else {
+       validationMessage = 'Validacion incorrecta';
+     }
+ 
+     validationMessage == "Validacion incorrecta" ? Swal.fire(
+       'Error',
+       'Validacion incorrecta',
+       'error'
+     ) : Swal.fire(
+       'Succes',
+       'Validacion Correcta',
+       'success'
+     )
+   }
+ 
+   @Input() error: string | null;
+ 
+   @Output() submitEM = new EventEmitter();
+ }
+ 
 
-    validationMessage == "Por favor, complete todos los campos" ? Swal.fire(
-      'Error',
-      'Validacion incorrecta',
-      'error'
-    ) : Swal.fire(
-      'Succes',
-      'Validacion Correcta',
-      'success'
-    )
-  }
 
-  @Input() error: string | null;
-
-  @Output() submitEM = new EventEmitter();
-}

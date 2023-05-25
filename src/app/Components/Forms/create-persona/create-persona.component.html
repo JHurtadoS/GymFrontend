@@ -33,6 +33,7 @@
           <input type="text" matInput placeholder="apellido" formControlName="apellido">
         </mat-form-field>
       </p>
+
       <p
         *ngIf="form.controls['apellido'].invalid && (form.controls['apellido'].dirty || form.controls['apellido'].touched)">
         Error de Validacion
@@ -44,10 +45,11 @@
         <input type="number" matInput placeholder="celular" formControlName="celular">
       </mat-form-field>
     </p>
+
       <mat-error
         *ngIf="form.controls['celular'].invalid && (form.controls['celular'].dirty || form.controls['celular'].touched)">
         Error de Validacion
-  </mat-error>
+    </mat-error>
 
       <p>
       <mat-form-field class="genero">
@@ -82,13 +84,12 @@
     </p>
       
 
-      <p *ngIf="error" class="error">
-        {{ error }}
-      </p>
 
-      <div class="button">
-    </form>
-    <div *ngIf="error">
-      <p>{{ error }}</p>
+
+    <div class="button">
+      <button type="submit" mat-button>Enviar</button>
     </div>
+
+    </form>
+  </mat-card-content>
 </mat-card>

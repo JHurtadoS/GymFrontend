@@ -4,14 +4,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
-<<<<<<< HEAD
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CreatePersonaComponent } from '../Forms/create-persona/create-persona.component';
 import { FormGroup } from '@angular/forms';
 import { FormsService } from 'src/app/services/forms.service';
-=======
-import { MatDialog } from '@angular/material/dialog';
->>>>>>> gym-front/nueva-karen
 
 
 @Component({
