@@ -1,7 +1,3 @@
-<app-menu>
-
-</app-menu>
-
 <mat-card>
   <mat-card-title class="title">Formulario Usuario</mat-card-title>
   <mat-card-content>
@@ -9,21 +5,23 @@
       <p>
         <mat-form-field class="correo">
           <input type="text" matInput placeholder="Correo" formControlName="correo">
+          <mat-error *ngIf="form.controls['correo'].invalid && (form.controls['correo'].dirty || form.controls['correo'].touched)">
+            Campo Requerido
+          </mat-error>
         </mat-form-field>
       </p>
-      <p *ngIf="form.controls['correo'].invalid && (form.controls['correo'].dirty || form.controls['correo'].touched)">
-        Campo Requerido
-      </p>
+      
 
       <p>
         <mat-form-field>
           <input type="password" class="contraseña" matInput placeholder="contraseña" formControlName="contraseña">
-        </mat-form-field>
-      </p>
-      <p
+          <mat-error
         *ngIf="form.controls['contraseña'].invalid && (form.controls['contraseña'].dirty || form.controls['contraseña'].touched)">
         Campo Requerido
+    </mat-error>
+        </mat-form-field>
       </p>
+      
 
       <p *ngIf="error" class="error">
         {{ error }}

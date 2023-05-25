@@ -42,7 +42,7 @@ import { PruebaAdminComponent } from './components/prueba-admin/prueba-admin.com
 import { AuthGuard } from './guards/auth.guard';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/app.reducer';
-import { TablaComponent, dialogDelete, dialogUpdate } from './Components/tabla/tabla.component';
+import { TablaComponent, dialogDelete } from './Components/tabla/tabla.component';
 import { NavBarTitleComponent } from './components/nav-bar-title/nav-bar-title.component';
 import { CreateAsistenciaComponent } from './Components/Forms/create-asistencia/create-asistencia.component';
 import { CreateEventoComponent } from './Components/Forms/create-evento/create-evento.component';
@@ -64,7 +64,7 @@ import { CreatePersonaComponent } from './Components/Forms/create-persona/create
     LoginComponent,
     RutinaComponent,
     MenuComponent,
-    dialogUpdate,
+
     dialogDelete,
     CreateRutinaComponent,
     CreateEjerciciosComponent,

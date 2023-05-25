@@ -13,9 +13,7 @@ export class CreateRutinaComponent implements OnInit{
   form: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.max(80)]),
     tipRutina: new FormControl('', [Validators.required, Validators.max(80)]),
-  }
-
-  );
+  });
 
   constructor(private api: ApiService, public forms:FormsService) { }
 
@@ -43,6 +41,7 @@ export class CreateRutinaComponent implements OnInit{
     } else {
       validationMessage = 'Validacion incorrecta';
     }
+
 
     validationMessage == "Validacion incorrecta" ? Swal.fire(
       'Error',

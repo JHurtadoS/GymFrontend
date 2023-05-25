@@ -1,6 +1,3 @@
-
-<app-menu></app-menu>
-
 <mat-card>
   <mat-card-title class="title">Formulario persona</mat-card-title>
   <mat-card-content>
@@ -31,11 +28,11 @@
       
 
       <p>
-      <mat-form-field class="apellido">
-        <mat-label>Apellio: </mat-label>
-        <input type="text" matInput placeholder="apellido" formControlName="apellido">
-      </mat-form-field>
-    </p>
+        <mat-form-field class="apellido">
+          <mat-label>Apellio: </mat-label>
+          <input type="text" matInput placeholder="apellido" formControlName="apellido">
+        </mat-form-field>
+      </p>
       <p
         *ngIf="form.controls['apellido'].invalid && (form.controls['apellido'].dirty || form.controls['apellido'].touched)">
         Error de Validacion
@@ -90,12 +87,8 @@
       </p>
 
       <div class="button">
-        <button type="submit" mat-button>Enviar</button>
-      </div>
-
     </form>
     <div *ngIf="error">
       <p>{{ error }}</p>
     </div>
-  </mat-card-content>
 </mat-card>

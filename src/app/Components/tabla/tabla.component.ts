@@ -4,10 +4,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
+<<<<<<< HEAD
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CreatePersonaComponent } from '../Forms/create-persona/create-persona.component';
 import { FormGroup } from '@angular/forms';
 import { FormsService } from 'src/app/services/forms.service';
+=======
+import { MatDialog } from '@angular/material/dialog';
+>>>>>>> gym-front/nueva-karen
 
 
 @Component({
@@ -99,20 +103,7 @@ export class TablaComponent implements AfterViewInit {
 export class dialogDelete { }
 
 
-@Component({
-  selector: 'dialogUpdate',
-  template: `<h1 mat-dialog-title>Update</h1>
-<div mat-dialog-content>
-  <input type="text" matInput placeholder="Prueba 1" formControlName="correo">
-  <input type="text" matInput placeholder="Prueba 2" formControlName="correo">
-</div>
-<div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="false">No</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
-</div>`,
-})
 
-export class dialogUpdate { }
 
 
 

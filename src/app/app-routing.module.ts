@@ -21,24 +21,28 @@ import { CreateEventoComponent } from './Components/Forms/create-evento/create-e
 import { CreatePersonaComponent } from './Components/Forms/create-persona/create-persona.component';
 
 const routes: Routes = [
-  { path: 'Persona', component: PersonaComponent, canActivate: [AuthGuard] },
-  { path: 'Asistencia', component: AsistenciaComponent, canActivate: [AuthGuard] },
-  { path: 'Ejercicios', component: EjerciciosComponent, canActivate: [AuthGuard] },
-  { path: 'Evento', component: EventoComponent, canActivate: [AuthGuard] },
-  { path: 'Herramienta', component: HerramientaComponent, canActivate: [AuthGuard] },
-  { path: 'Rutina', component: RutinaComponent, canActivate: [AuthGuard] },
-  { path: 'Usuario', component: UsuarioComponent, canActivate: [AuthGuard] },
 
-  { path: 'createUser', component: UsuarioCreateFormComponent, canActivate: [AuthGuard] },
-  { path: 'createRutina', component: CreateRutinaComponent, canActivate: [AuthGuard] },
-  { path: 'createEjercicio', component: CreateEjerciciosComponent, canActivate: [AuthGuard] },
-  { path: 'createHerramienta', component: CreateHerramientaComponent, canActivate: [AuthGuard] },
-  { path: 'CreateAsistenciaComponent', component: CreateAsistenciaComponent, canActivate: [AuthGuard] },
-  { path: 'CreateEventoComponent', component: CreateEventoComponent, canActivate: [AuthGuard] },
-  { path: 'CreatePersonaComponent', component: CreatePersonaComponent, canActivate: [AuthGuard] },
+
   { path: '', component: NavBarTitleComponent },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
-  { path: 'admin', component: PruebaAdminComponent, canActivate: [AuthGuard] }
+  {
+    path: 'admin', component: PruebaAdminComponent, canActivate: [AuthGuard], children: [
+      { path: 'Persona', component: PersonaComponent },
+      { path: 'Asistencia', component: AsistenciaComponent },
+      { path: 'Ejercicios', component: EjerciciosComponent },
+      { path: 'Evento', component: EventoComponent },
+      { path: 'Herramienta', component: HerramientaComponent },
+      { path: 'Rutina', component: RutinaComponent },
+      { path: 'Usuario', component: UsuarioComponent },
+      { path: 'CreatePersonaComponent', component: CreatePersonaComponent },
+      { path: 'createUser', component: UsuarioCreateFormComponent },
+      { path: 'createRutina', component: CreateRutinaComponent },
+      { path: 'createEjercicio', component: CreateEjerciciosComponent },
+      { path: 'createHerramienta', component: CreateHerramientaComponent },
+      { path: 'CreateAsistenciaComponent', component: CreateAsistenciaComponent },
+      { path: 'CreateEventoComponent', component: CreateEventoComponent },
+    ]
+  }
 
 ];
 
