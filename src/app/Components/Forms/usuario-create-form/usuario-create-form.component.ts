@@ -22,6 +22,7 @@ export class UsuarioCreateFormComponent implements OnInit {
     this.forms.element.subscribe((res: any)=>{
       if(res!=null){
         this.form.setControl('correo', new FormControl(res.correo));
+        this.form.setControl('contraseña', new FormControl(res.contraseña));
       }
     })
   }
@@ -34,7 +35,7 @@ export class UsuarioCreateFormComponent implements OnInit {
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
       validationMessage = 'La validación fue correcta';
-      this.api.Post('Usuarios', this.form.value).then(() => {
+      this.api.Post('Usuarios', formData).then(() => {
         // Éxito en la llamada POST
         this.submitEM.emit();
       }, (error) => {
@@ -45,7 +46,7 @@ export class UsuarioCreateFormComponent implements OnInit {
       validationMessage = 'Validacion incorrecta';
     }
 
-    validationMessage == "Por favor, complete todos los campos" ? Swal.fire(
+    validationMessage == "Validacion incorrecta" ? Swal.fire(
       'Error',
       'Validacion incorrecta',
       'error'
@@ -55,7 +56,6 @@ export class UsuarioCreateFormComponent implements OnInit {
       'success'
     )
   }
-
   @Input() error: string | null;
 
   @Output() submitEM = new EventEmitter();

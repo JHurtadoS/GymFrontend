@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class CreateRutinaComponent implements OnInit{
   form: FormGroup = new FormGroup({
-    nombre: new FormControl('', [Validators.required, Validators.max(80)]),
+    cantCalorias: new FormControl('', [Validators.required, Validators.max(80)]),
     tipRutina: new FormControl('', [Validators.required, Validators.max(80)]),
   });
 
@@ -21,7 +21,7 @@ export class CreateRutinaComponent implements OnInit{
     this.forms.element.subscribe((res: any)=>{
       if(res!=null){
         this.form.setControl('tipRutina', new FormControl(res.tipRutina));
-        this.form.setControl('nombre', new FormControl(res.nombre));
+        this.form.setControl('cantCalorias', new FormControl(res.cantCalorias));
       }
     })
   }
