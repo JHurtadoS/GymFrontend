@@ -13,10 +13,14 @@ import { CreateAsistenciaComponent } from '../../Forms/create-asistencia/create-
 export class AsistenciaComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   data: any[]
-  component:any
+  component: any
+  IdTableDrop: string;
+  Controller: string
 
   constructor(public api: ApiService) {
     this.dataSource = new MatTableDataSource();
+    this.IdTableDrop = "idCita"
+    this.Controller = "Asistenciums"
   }
 
   ngOnInit(): void {
@@ -28,6 +32,6 @@ export class AsistenciaComponent implements OnInit {
       this.dataSource.data = res;
       this.data = res
     });
-    this.component=CreateAsistenciaComponent
+    this.component = CreateAsistenciaComponent
   }
 }

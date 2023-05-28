@@ -15,21 +15,27 @@ import { CreateRutinaComponent } from '../../Forms/create-rutina/create-rutina.c
 export class RutinaComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   data: any[]
-  component:any
+  IdTableDrop: string;
+  Controller: string
+
+  component: any
 
   constructor(public api: ApiService) {
     this.dataSource = new MatTableDataSource();
+    this.IdTableDrop = "id"
+    this.Controller = "Rutinas"
   }
 
   ngOnInit(): void {
     this.GetAsistencia();
+
   }
 
   public async GetAsistencia() {
-    this.api.Get('Rutinas').then((res) => {
+    this.api.Get(this.Controller).then((res) => {
       this.dataSource.data = res;
       this.data = res
     });
-    this.component=CreateRutinaComponent
+    this.component = CreateRutinaComponent
   }
 }

@@ -13,10 +13,16 @@ import { CreatePersonaComponent } from '../../Forms/create-persona/create-person
 export class PersonaComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   data: any[]
-  component:any
+  component: any
+  IdTableDrop: string;
+  Controller: string
+  desahabiltado: boolean
 
   constructor(public api: ApiService) {
     this.dataSource = new MatTableDataSource();
+    this.IdTableDrop = "idUsuario"
+    this.Controller = "Personas"
+    this.desahabiltado = true
   }
 
   ngOnInit(): void {
@@ -28,6 +34,6 @@ export class PersonaComponent implements OnInit {
       this.dataSource.data = res;
       this.data = res
     });
-    this.component=CreatePersonaComponent
+    this.component = CreatePersonaComponent
   }
 }

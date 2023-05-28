@@ -13,10 +13,14 @@ import { CreateEjerciciosComponent } from '../../Forms/create-ejercicios/create-
 export class EjerciciosComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   data: any[]
-  component:any
+  component: any
+  IdTableDrop: string;
+  Controller: string
 
   constructor(public api: ApiService) {
     this.dataSource = new MatTableDataSource();
+    this.IdTableDrop = "id"
+    this.Controller = "Ejercicios"
   }
 
   ngOnInit(): void {
@@ -28,7 +32,7 @@ export class EjerciciosComponent implements OnInit {
       this.dataSource.data = res;
       this.data = res
     });
-    this.component=CreateEjerciciosComponent
+    this.component = CreateEjerciciosComponent
 
   }
 }

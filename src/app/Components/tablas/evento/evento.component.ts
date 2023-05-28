@@ -14,10 +14,14 @@ import { CreateEventoComponent } from '../../Forms/create-evento/create-evento.c
 export class EventoComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   data: any[]
-  component:any
+  component: any
+  IdTableDrop: string;
+  Controller: string
 
   constructor(public api: ApiService) {
     this.dataSource = new MatTableDataSource();
+    this.IdTableDrop = "idEventos"
+    this.Controller = "Eventoes"
   }
 
   ngOnInit(): void {
@@ -31,7 +35,7 @@ export class EventoComponent implements OnInit {
       this.data = res
 
     });
-    this.component=CreateEventoComponent
+    this.component = CreateEventoComponent
 
   }
 }

@@ -15,10 +15,14 @@ import { CreateHerramientaComponent } from '../../Forms/create-herramienta/creat
 export class HerramientaComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   data: any[]
-  component:any
+  component: any
+  IdTableDrop: string;
+  Controller: string
 
   constructor(public api: ApiService) {
     this.dataSource = new MatTableDataSource();
+    this.IdTableDrop = "id"
+    this.Controller = "Herramientums"
   }
 
   ngOnInit(): void {
@@ -32,6 +36,6 @@ export class HerramientaComponent implements OnInit {
       this.data = res
 
     });
-    this.component=CreateHerramientaComponent
+    this.component = CreateHerramientaComponent
   }
 }

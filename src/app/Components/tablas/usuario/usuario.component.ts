@@ -13,10 +13,14 @@ import { UsuarioCreateFormComponent } from '../../Forms/usuario-create-form/usua
 export class UsuarioComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   data: any[]
-  component:any
+  component: any
+  IdTableDrop: string;
+  Controller: string
 
   constructor(public api: ApiService) {
     this.dataSource = new MatTableDataSource();
+    this.IdTableDrop = "idUsuario"
+    this.Controller = "Usuarios"
   }
 
   ngOnInit(): void {
@@ -28,7 +32,7 @@ export class UsuarioComponent implements OnInit {
       this.dataSource.data = res;
       this.data = res
     });
-    this.component=UsuarioCreateFormComponent
+    this.component = UsuarioCreateFormComponent
   }
 }
 
