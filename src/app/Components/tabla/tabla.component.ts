@@ -42,6 +42,11 @@ export class TablaComponent implements AfterViewInit {
     this.dialog.open(this.component)
   }
 
+  CreateElement(){
+    this.forms.element.next([])
+    this.dialog.open(this.component)
+  }
+
   deleteElement(element: any) {
     // Lógica para eliminar el elemento
     console.log(this.IdTableDrop)

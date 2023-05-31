@@ -13,6 +13,10 @@
         <ng-container *ngIf="disCol === 'acciones'" id="botones">
           <button mat-raised-button color="warn" (click)="deleteElement(element)"><mat-icon >delete</mat-icon></button>
           <button mat-raised-button color="accent" (click)="updateElement(element)"><mat-icon >update</mat-icon></button>
+          <button mat-raised-button color="primary" (click)="CreateElement()">Create</button>
+
+
+          
         </ng-container>
       </td>
     </ng-container>

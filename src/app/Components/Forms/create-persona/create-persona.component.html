@@ -4,6 +4,22 @@
     <form [formGroup]="form" (ngSubmit)="submit()">
 
 
+      <ng-container *ngIf="accion == 'post'">
+        <p>
+          <mat-form-field class="idUsuario">
+            <mat-label>Documento</mat-label>
+            <input type="number" matInput placeholder="idUsuario" formControlName="idUsuario">
+            <mat-error
+            *ngIf="form.controls['idUsuario'].invalid && (form.controls['idUsuario'].dirty || form.controls['idUsuario'].touched)">
+            Complete el campo
+      </mat-error>
+          </mat-form-field>
+        </p>
+      </ng-container>
+
+
+
+
       <p>
       <mat-form-field class="documento">
         <mat-label>Documento</mat-label>
