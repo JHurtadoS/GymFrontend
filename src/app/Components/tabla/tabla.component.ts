@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Input, NgModule, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Input, NgModule, SimpleChanges } from '@angular/core';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -9,6 +9,7 @@ import { CreatePersonaComponent } from '../Forms/create-persona/create-persona.c
 import { FormGroup } from '@angular/forms';
 import { FormsService } from 'src/app/services/forms.service';
 import Swal from 'sweetalert2';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 
 
 @Component({
@@ -26,15 +27,18 @@ export class TablaComponent implements AfterViewInit {
   @Input() desahabiltado: boolean = false
   @Input() IdTableDrop: string
   @Input() Controller: string
-
+  //isChecked = true;
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('switchToggle') switchToggle!: MatSlideToggle;
 
 
-  constructor(public api: ApiService, public dialog: MatDialog, public forms: FormsService) {
+  constructor(public api: ApiService, public dialog: MatDialog, public forms: FormsService, private cdr: ChangeDetectorRef) {
     this.dataSource = new MatTableDataSource();
+    console.log(this.data)
+
   }
 
   updateElement(element: any) {
@@ -42,7 +46,7 @@ export class TablaComponent implements AfterViewInit {
     this.dialog.open(this.component)
   }
 
-  CreateElement(){
+  CreateElement() {
     this.forms.element.next([])
     this.dialog.open(this.component)
   }
@@ -100,14 +104,43 @@ export class TablaComponent implements AfterViewInit {
     }
   }*/
 
+  //isChecked = true;
+
+  async handleDisable(checked: boolean, element: any) {
+
+    const disable = { "desahabilitado": checked }
+    const id = element[this.IdTableDrop]
+
+    const result = await Swal.fire({
+      title: 'Confirmar acción',
+      text: '¿Estás seguro de habilitar/deshabilitar?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí',
+      cancelButtonText: 'No',
+    });
+
+    if (result.isConfirmed) {
+
+      element.desahabilitado = checked;
+      const data = await this.api.Patch(this.Controller, id, disable)
+      console.log(data)
+
+    } else {
+      element.desahabilitado = !checked;
+    }
+
+  }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
     console.log(this.data)
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['data'] && this.data) {
+      //console.log(this.data)
       this.loadTable();
     }
   }

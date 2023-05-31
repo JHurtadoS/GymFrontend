@@ -47,6 +47,7 @@ import { NavBarTitleComponent } from './components/nav-bar-title/nav-bar-title.c
 import { CreateAsistenciaComponent } from './Components/Forms/create-asistencia/create-asistencia.component';
 import { CreateEventoComponent } from './Components/Forms/create-evento/create-evento.component';
 import { CreatePersonaComponent } from './Components/Forms/create-persona/create-persona.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 
@@ -92,6 +93,7 @@ import { CreatePersonaComponent } from './Components/Forms/create-persona/create
     MatDialogModule,
     ReactiveFormsModule,
     MatPaginatorModule,
+    MatSlideToggleModule,
     MatSortModule,
     LayoutModule,
     MatToolbarModule,

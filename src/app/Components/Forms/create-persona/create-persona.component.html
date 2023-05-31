@@ -4,107 +4,110 @@
     <form [formGroup]="form" (ngSubmit)="submit()">
 
 
-      <ng-container *ngIf="accion == 'post'">
-        <p>
-          <mat-form-field class="idUsuario">
-            <mat-label>Documento</mat-label>
-            <input type="number" matInput placeholder="idUsuario" formControlName="idUsuario">
-            <mat-error
-            *ngIf="form.controls['idUsuario'].invalid && (form.controls['idUsuario'].dirty || form.controls['idUsuario'].touched)">
-            Complete el campo
-      </mat-error>
-          </mat-form-field>
-        </p>
-      </ng-container>
 
 
+      <mat-form-field>
+        <mat-label>personaIdUsuario</mat-label>
+        <mat-select formControlName="personaIdUsuario">
 
+          <mat-option *ngFor="let opcion of Usuarios" [value]="opcion.idUsuario">{{ opcion.correo }}</mat-option>
 
-      <p>
-      <mat-form-field class="documento">
-        <mat-label>Documento</mat-label>
-        <input type="number" matInput placeholder="documento" formControlName="documento">
+        </mat-select>
         <mat-error
-        *ngIf="form.controls['documento'].invalid && (form.controls['documento'].dirty || form.controls['documento'].touched)">
-        Complete el campo
-  </mat-error>
-      </mat-form-field>
-    </p>
-      
-
-      <p>
-      <mat-form-field class="nombre">
-        <mat-label>Nombre</mat-label>
-        <input type="text" matInput placeholder="nombre" formControlName="nombre">
-        <mat-error *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
-          Complete el campo
+          *ngIf="form.controls['personaIdUsuario'].invalid && (form.controls['personaIdUsuario'].dirty || form.controls['personaIdUsuario'].touched)">
+          Seleccione una opcion
         </mat-error>
       </mat-form-field>
-    </p>
-      
+
+
+      <p>
+        <mat-form-field class="documento">
+          <mat-label>Documento</mat-label>
+          <input type="number" matInput placeholder="documento" formControlName="documento">
+          <mat-error
+            *ngIf="form.controls['documento'].invalid && (form.controls['documento'].dirty || form.controls['documento'].touched)">
+            Complete el campo
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+
+      <p>
+        <mat-form-field class="nombre">
+          <mat-label>Nombre</mat-label>
+          <input type="text" matInput placeholder="nombre" formControlName="nombre">
+          <mat-error
+            *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
+            Complete el campo
+          </mat-error>
+        </mat-form-field>
+      </p>
+
 
       <p>
         <mat-form-field>
           <mat-label>Apellidos: </mat-label>
           <input type="text" matInput placeholder="apellidos" formControlName="apellidos">
           <mat-error
-        *ngIf="form.controls['apellidos'].invalid && (form.controls['apellidos'].dirty || form.controls['apellidos'].touched)">
-        Complete el campo
-        </mat-error>
+            *ngIf="form.controls['apellidos'].invalid && (form.controls['apellidos'].dirty || form.controls['apellidos'].touched)">
+            Complete el campo
+          </mat-error>
         </mat-form-field>
       </p>
 
       <p>
-      <mat-form-field class="celular">
-        <mat-label>Celular:</mat-label>
-        <input type="number" matInput placeholder="celular" formControlName="celular">
-        <mat-error
-        *ngIf="form.controls['celular'].invalid && (form.controls['celular'].dirty || form.controls['celular'].touched)">
-        Complete el campo
-    </mat-error>
-      </mat-form-field>
-    </p>
+        <mat-form-field class="celular">
+          <mat-label>Celular:</mat-label>
+          <input type="number" matInput placeholder="celular" formControlName="celular">
+          <mat-error
+            *ngIf="form.controls['celular'].invalid && (form.controls['celular'].dirty || form.controls['celular'].touched)">
+            Complete el campo
+          </mat-error>
+        </mat-form-field>
+      </p>
 
-      
+
 
       <p>
-      <mat-form-field class="genero">
-        <mat-label>Genero:</mat-label>
-        <input type="text" matInput placeholder="genero" formControlName="genero">
-        <mat-error *ngIf="form.controls['genero'].invalid && (form.controls['genero'].dirty || form.controls['genero'].touched)">
-          Complete el campo
-        </mat-error>
-      </mat-form-field>
-    </p>
-      
+        <mat-form-field class="genero">
+          <mat-label>Genero:</mat-label>
+          <input type="text" matInput placeholder="genero" formControlName="genero">
+          <mat-error
+            *ngIf="form.controls['genero'].invalid && (form.controls['genero'].dirty || form.controls['genero'].touched)">
+            Complete el campo
+          </mat-error>
+        </mat-form-field>
+      </p>
+
 
       <p>
-      <mat-form-field class="rh">
-        <mat-label>Rh:</mat-label>
-        <input type="text" matInput placeholder="rh" formControlName="rh">
-        <mat-error *ngIf="form.controls['rh'].invalid && (form.controls['rh'].dirty || form.controls['rh'].touched)">
-          Complete el campo
-        </mat-error>
-      </mat-form-field>
-    </p>
-      
+        <mat-form-field class="rh">
+          <mat-label>Rh:</mat-label>
+          <input type="text" matInput placeholder="rh" formControlName="rh">
+          <mat-error *ngIf="form.controls['rh'].invalid && (form.controls['rh'].dirty || form.controls['rh'].touched)">
+            Complete el campo
+          </mat-error>
+        </mat-form-field>
+      </p>
+
 
       <p>
-      <mat-form-field class="rol">
-        <mat-label>Rol:</mat-label>
-        <input type="text" matInput placeholder="rol" formControlName="rol">
-        <mat-error *ngIf="form.controls['rol'].invalid && (form.controls['rol'].dirty || form.controls['rol'].touched)">
-          Complete el campo
-        </mat-error>
-      </mat-form-field>
-    </p>
-      
+        <mat-form-field class="rol">
+          <mat-label>Rol:</mat-label>
+          <input type="text" matInput placeholder="rol" formControlName="rol">
+          <mat-error
+            *ngIf="form.controls['rol'].invalid && (form.controls['rol'].dirty || form.controls['rol'].touched)">
+            Complete el campo
+          </mat-error>
+        </mat-form-field>
+      </p>
 
 
 
-    <div class="button">
-      <button type="submit" mat-button>Enviar</button>
-    </div>
+
+      <div class="button">
+        <button type="submit" mat-button>Enviar</button>
+      </div>
 
     </form>
   </mat-card-content>

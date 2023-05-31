@@ -51,15 +51,18 @@ export class CreateEjerciciosComponent implements OnInit {
     });
   }
 
-  constructor(private api: ApiService, public forms:FormsService) { }
+  constructor(private api: ApiService, public forms: FormsService) { }
   ngOnInit(): void {
-    this.forms.element.subscribe((res: any)=>{
-      if(res!=null){
+    this.GetHerramienta();
+    this.forms.element.subscribe((res: any) => {
+      if (res != null) {
         this.form.setControl('videoAsociado', new FormControl(res.videoAsociado));
         this.form.setControl('nombre', new FormControl(res.nombre));
         this.form.setControl('tipo', new FormControl(res.tipo));
         this.form.setControl('ncalorias', new FormControl(res.ncalorias));
         this.form.setControl('maquina', new FormControl(res.maquina));
+        this.form.setControl('ejercicioIdHerramienta', new FormControl(res.ejercicioIdHerramienta));
+
       }
     })
   }
@@ -70,7 +73,7 @@ export class CreateEjerciciosComponent implements OnInit {
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
       this.api.Post('Ejercicios', this.form.value).then(() => {
-         // Éxito en la llamada POST
+        // Éxito en la llamada POST
         this.submitEM.emit();
       }, (error) => {
         // Error en la llamada POST
