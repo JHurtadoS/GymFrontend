@@ -37,7 +37,12 @@ export class TablaComponent implements AfterViewInit {
 
   constructor(public api: ApiService, public dialog: MatDialog, public forms: FormsService, private cdr: ChangeDetectorRef) {
     this.dataSource = new MatTableDataSource();
-    console.log(this.data)
+
+
+  }
+
+
+  ngOnInit(): void {
 
   }
 
@@ -49,6 +54,7 @@ export class TablaComponent implements AfterViewInit {
   CreateElement() {
     this.forms.element.next([])
     this.dialog.open(this.component)
+
   }
 
   deleteElement(element: any) {
@@ -80,6 +86,8 @@ export class TablaComponent implements AfterViewInit {
             this.api.Put(this.Controller, id, disable)
           } else {
             this.api.Delete(this.Controller, id)
+            window.location.reload()
+
           }
           Swal.fire('Saved!', '', 'success')
           //this.loadTable();
@@ -97,14 +105,6 @@ export class TablaComponent implements AfterViewInit {
   }
 
 
-  /*eliminarElementoPorId(id: string) {
-    const indice = this.data.findIndex(elemento => elemento.id === id);
-    if (indice !== -1) {
-      this.data.splice(indice, 1);
-    }
-  }*/
-
-  //isChecked = true;
 
   async handleDisable(checked: boolean, element: any) {
 
@@ -124,10 +124,14 @@ export class TablaComponent implements AfterViewInit {
 
       element.desahabilitado = checked;
       const data = await this.api.Patch(this.Controller, id, disable)
+
       console.log(data)
+      window.location.reload()
+
 
     } else {
       element.desahabilitado = !checked;
+      window.location.reload()
     }
 
   }

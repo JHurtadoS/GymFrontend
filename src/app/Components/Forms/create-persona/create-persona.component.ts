@@ -24,7 +24,7 @@ interface Usuario {
 export class CreatePersonaComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
-    idUsuario: new FormControl(),
+    id: new FormControl(),
     personaIdUsuario: new FormControl('', [Validators.required]),
     documento: new FormControl('', [Validators.required]),
     apellidos: new FormControl('', [Validators.required, Validators.max(80)]),
@@ -41,7 +41,7 @@ export class CreatePersonaComponent implements OnInit {
 
 
   accion: "put" | "post"
-  idName = "idUsuario"
+  idName = "id"
   id?: any
   Usuarios: Usuario[]
 
@@ -64,11 +64,11 @@ export class CreatePersonaComponent implements OnInit {
       this.id = this.accion == "put" ? res[this.idName] : undefined;
       if (res != null) {
 
-        //this.form.setControl('idUsuario', new FormControl(res.idUsuario));
-        //this.form.setControl('idUsuario', new FormControl(res.idUsuario));
+
+
         console.log(res)
-        this.form.setControl('idUsuario', new FormControl(res.idUsuario));
-        this.form.setControl('personaIdUsuario', new FormControl(res.idUsuario));
+        this.form.setControl('id', new FormControl(res.id));
+        this.form.setControl('personaIdUsuario', new FormControl(res.personaIdUsuario));
         this.form.setControl('documento', new FormControl(res.documento));
         this.form.setControl('apellidos', new FormControl(res.apellidos));
         this.form.setControl('nombre', new FormControl(res.nombre));
@@ -89,20 +89,21 @@ export class CreatePersonaComponent implements OnInit {
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
       if (this.accion == "post") {
-        const disable = { "desahabilitado": true }
-        const value = { ...this.form.value, ...disable }
 
-        this.api.Post('Personas', value).then(() => {
+        this.api.Post2('Personas', value).then(() => {
           // Éxito en la llamada POST
           this.submitEM.emit();
+          window.location.reload()
         }, (error) => {
           // Error en la llamada POST
           this.error = error.message;
         });
       } else {
         this.api.Put('Personas', this.id, this.form.value).then(() => {
+
           // Éxito en la llamada POST
           this.submitEM.emit();
+          window.location.reload()
         }, (error) => {
           // Error en la llamada POST
           this.error = error.message;

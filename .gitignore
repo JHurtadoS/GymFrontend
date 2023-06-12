@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 GymApp.code-workspace
 src/app/Services/api.service.ts
+src/app/Services/api.service.ts

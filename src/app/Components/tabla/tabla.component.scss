@@ -25,3 +25,15 @@ button {
   }
 
 }
+
+
+.boton-crear{
+  display: block;
+  position: relative;
+  button{
+    margin-top: 20px;
+    position: absolute;
+    left: 95%;
+
+  }
+}

@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ApiService {
   constructor(public http: HttpClient) { }
 
-  url = 'https://localhost:7025/api/';
+  url = 'https://localhost:7292/api/';
   async Get(Controller: string) {
     console.log(this.url + Controller);
     var response: any;
@@ -59,6 +59,16 @@ export class ApiService {
     var response: any;
 
     await this.http.delete(this.url + Controller + "/" + id).subscribe(res => {
+      console.log(res);
+      response = res;
+    });
+    return response;
+  }
+
+  async Patch(Controller: string, id: string, body: any) {
+    var response: any;
+
+    await this.http.patch(this.url + Controller + "/" + id, body).subscribe(res => {
       console.log(res);
       response = res;
     });

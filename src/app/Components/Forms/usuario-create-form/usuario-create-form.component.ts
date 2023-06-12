@@ -12,15 +12,20 @@ import Swal from 'sweetalert2';
 })
 export class UsuarioCreateFormComponent implements OnInit {
   form: FormGroup = new FormGroup({
+    idUsuario: new FormControl(),
     correo: new FormControl(null, [Validators.required]),
     contraseña: new FormControl(null, [Validators.required]),
   });
 
-  constructor(private api: ApiService, public forms:FormsService) {}
+  constructor(private api: ApiService, public forms: FormsService) { }
+
+  accion: "put" | "post"
+  id?: any
 
   ngOnInit(): void {
-    this.forms.element.subscribe((res: any)=>{
-      if(res!=null){
+    this.forms.element.subscribe((res: any) => {
+      if (res != null) {
+        this.form.setControl('idUsuario', new FormControl(res.idUsuario));
         this.form.setControl('correo', new FormControl(res.correo));
         this.form.setControl('contraseña', new FormControl(res.contraseña));
       }
@@ -28,20 +33,36 @@ export class UsuarioCreateFormComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.accion)
     let validationMessage: string;
     const formData = new FormData();
+    const value = { ...this.form.value, }
 
     console.log(this.form.value)
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
       validationMessage = 'La validación fue correcta';
-      this.api.Post('Usuarios', formData).then(() => {
-        // Éxito en la llamada POST
-        this.submitEM.emit();
-      }, (error) => {
-        // Error en la llamada POST
-        this.error = error.message;
-      });
+      if (this.accion == "post") {
+
+        this.api.Post2('Usuarios', value).then(() => {
+          // Éxito en la llamada POST
+          this.submitEM.emit();
+          //window.location.reload()
+        }, (error) => {
+          // Error en la llamada POST
+          this.error = error.message;
+        });
+      } else {
+        this.api.Put('Usuarios', this.id, this.form.value).then(() => {
+
+          // Éxito en la llamada POST
+          this.submitEM.emit();
+          //window.location.reload()
+        }, (error) => {
+          // Error en la llamada POST
+          this.error = error.message;
+        });
+      }
     } else {
       validationMessage = 'Validacion incorrecta';
     }

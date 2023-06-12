@@ -3,6 +3,8 @@
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
 </mat-form-field>
 
+
+
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
 
@@ -22,10 +24,12 @@
           <button mat-raised-button color="warn" *ngIf="!desahabiltado"
             (click)="deleteElement(element)"><mat-icon>delete</mat-icon></button>
           <button mat-raised-button color="accent" (click)="updateElement(element)"><mat-icon>update</mat-icon></button>
-          <button mat-raised-button color="primary" (click)="CreateElement()">Create</button>
         </ng-container>
       </td>
+
     </ng-container>
+
+
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -37,4 +41,9 @@
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+
+
+<div class="boton-crear">
+  <button id mat-raised-button color="primary" (click)="CreateElement()">Create</button>
 </div>

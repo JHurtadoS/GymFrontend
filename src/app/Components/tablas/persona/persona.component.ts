@@ -20,7 +20,7 @@ export class PersonaComponent implements OnInit {
 
   constructor(public api: ApiService) {
     this.dataSource = new MatTableDataSource();
-    this.IdTableDrop = "idUsuario"
+    this.IdTableDrop = "id"
     this.Controller = "Personas"
     this.desahabiltado = true
   }
