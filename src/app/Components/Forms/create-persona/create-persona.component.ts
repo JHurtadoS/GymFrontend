@@ -64,8 +64,6 @@ export class CreatePersonaComponent implements OnInit {
       this.id = this.accion == "put" ? res[this.idName] : undefined;
       if (res != null) {
 
-
-
         console.log(res)
         this.form.setControl('id', new FormControl(res.id));
         this.form.setControl('personaIdUsuario', new FormControl(res.personaIdUsuario));
@@ -82,6 +80,7 @@ export class CreatePersonaComponent implements OnInit {
     })
   }
   submit() {
+    console.log(this.accion)
     let validationMessage: string;
     // console.log(this.form.value)
     const value = { ...this.form.value, }

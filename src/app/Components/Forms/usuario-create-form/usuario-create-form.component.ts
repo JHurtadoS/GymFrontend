@@ -21,9 +21,13 @@ export class UsuarioCreateFormComponent implements OnInit {
 
   accion: "put" | "post"
   id?: any
+  idName = "idUsuario"
 
   ngOnInit(): void {
     this.forms.element.subscribe((res: any) => {
+      this.accion = res.length == 0 ? "post" : "put";
+      console.log(this.accion)
+      this.id = this.accion == "put" ? res[this.idName] : undefined;
       if (res != null) {
         this.form.setControl('idUsuario', new FormControl(res.idUsuario));
         this.form.setControl('correo', new FormControl(res.correo));
@@ -36,7 +40,9 @@ export class UsuarioCreateFormComponent implements OnInit {
     console.log(this.accion)
     let validationMessage: string;
     const formData = new FormData();
-    const value = { ...this.form.value, }
+    const { idUsuario, ...value } = this.form.value;
+
+    // const value = { idUsuario,...this.form.value,idUsuario }
 
     console.log(this.form.value)
     if (this.form.valid) {
