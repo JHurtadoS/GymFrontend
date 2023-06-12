@@ -11,34 +11,59 @@ import Swal from 'sweetalert2';
 })
 export class CreateRutinaComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    cantCalorias: new FormControl('', [Validators.required, Validators.max(80)]),
+    nombre: new FormControl('', [Validators.required, Validators.max(80)]),
     tipRutina: new FormControl('', [Validators.required, Validators.max(80)]),
   });
 
   constructor(private api: ApiService, public forms: FormsService) { }
 
+  accion: "put" | "post"
+  id?: any
+  idName = "id"
+
+
   ngOnInit(): void {
     this.forms.element.subscribe((res: any) => {
+      this.accion = res.length == 0 ? "post" : "put";
+      console.log(this.accion)
+      this.id = this.accion == "put" ? res[this.idName] : undefined;
       if (res != null) {
+        this.form.setControl('id', new FormControl(res.id));
+        this.form.setControl('nombre', new FormControl(res.nombre));
         this.form.setControl('tipRutina', new FormControl(res.tipRutina));
-        this.form.setControl('cantCalorias', new FormControl(res.cantCalorias));
       }
     })
   }
 
   submit() {
     let validationMessage: string;
+    const formData = new FormData();
+    const { id, ...value } = this.form.value;
+
     console.log(this.form.value)
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
-      this.api.Post('Rutinas', this.form.value).then(() => {
-        // Éxito en la llamada POST
-        this.submitEM.emit();
+      if (this.accion == "post") {
 
-      }, (error) => {
-        // Error en la llamada POST
-        this.error = error.message;
-      });
+        this.api.Post2('Rutinas', value).then(() => {
+          // Éxito en la llamada POST
+          this.submitEM.emit();
+          window.location.reload()
+        }, (error) => {
+          // Error en la llamada POST
+          this.error = error.message;
+        });
+      } else {
+        this.api.Put('Rutinas', this.id, this.form.value).then(() => {
+
+          // Éxito en la llamada POST
+          this.submitEM.emit();
+          window.location.reload()
+        }, (error) => {
+          // Error en la llamada POST
+          this.error = error.message;
+        });
+      }
     } else {
       validationMessage = 'Validacion incorrecta';
     }
