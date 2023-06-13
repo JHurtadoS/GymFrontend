@@ -53,7 +53,7 @@ export class UsuarioCreateFormComponent implements OnInit {
         this.api.Post2('Usuarios', value).then(() => {
           // Éxito en la llamada POST
           this.submitEM.emit();
-          //window.location.reload()
+          window.location.reload()
         }, (error) => {
           // Error en la llamada POST
           this.error = error.message;
@@ -63,7 +63,7 @@ export class UsuarioCreateFormComponent implements OnInit {
 
           // Éxito en la llamada POST
           this.submitEM.emit();
-          //window.location.reload()
+          window.location.reload()
         }, (error) => {
           // Error en la llamada POST
           this.error = error.message;

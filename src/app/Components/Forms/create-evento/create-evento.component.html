@@ -5,7 +5,7 @@
       <p>
         <mat-form-field>
           <mat-label>Nombre:</mat-label>
-          <input type="text" matInput placeholder="Correo" formControlName="nombre">
+          <input type="text" matInput placeholder="nombre" formControlName="nombre">
           <mat-error *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)">
             Complete el campo
           </mat-error>
