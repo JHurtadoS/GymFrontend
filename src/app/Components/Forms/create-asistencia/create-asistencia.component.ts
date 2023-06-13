@@ -5,33 +5,32 @@ import { FormsService } from 'src/app/services/forms.service';
 import Swal from 'sweetalert2';
 
 
-
-
 @Component({
+  selector: 'app-create-asistencia',
   templateUrl: './create-asistencia.component.html',
   styleUrls: ['./create-asistencia.component.scss']
 })
 export class CreateAsistenciaComponent implements OnInit{
   form: FormGroup = new FormGroup({
+    idCita: new FormControl(),
     fechaHora: new FormControl('', [Validators.required]),
   });
 
    
-
-  accion:"put"|"post"
-  idName = "idCita"
-  id?:any
-
-
   constructor(private api: ApiService, public forms:FormsService) { }
+  
+  accion:"put" | "post"
+  id?:any
+  idName = "idCita"
+
+  
   ngOnInit(): void {
-    console.log(this.forms)
-    this.forms.element.subscribe((res: any)=>{
-      console.log(res.lengt)
-      this.accion= res.length==0? "post":"put";
+    this.forms.element.subscribe((res: any) => {
+      this.accion = res.length == 0 ? "post" : "put";
       console.log(this.accion)
-      this.id= this.accion=="put"?res[this.idName]:undefined;
-      if(res!=null){
+      this.id = this.accion == "put" ? res[this.idName] : undefined;
+      if (res != null) {
+        this.form.setControl('idCita', new FormControl(res.idCita));
         this.form.setControl('fechaHora', new FormControl(res.fechaHora));
       }
     })
@@ -39,31 +38,39 @@ export class CreateAsistenciaComponent implements OnInit{
 
 
   submit() {
+    console.log(this.accion)
     let validationMessage: string;
+    const formData = new FormData();
+    const { idCita, ...value } = this.form.value;
+
+
     console.log(this.form.value)
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
-      //Asistemcius
-      if(this.accion=="post"){
-        this.api.Post ('Asistemcius', this.form.value).then(() => {
+      if (this.accion == "post") {
+
+        this.api.Post2('Asistenciums', value).then(() => {
           // Éxito en la llamada POST
           this.submitEM.emit();
-         }, (error) => {
-           // Error en la llamada POST
-           this.error = error.message;
-         });
-      }else{
-        this.api.Put ('Asistemcius', this.id,this.form.value).then(() => {
+          window.location.reload()
+        }, (error) => {
+          // Error en la llamada POST
+          this.error = error.message;
+        });
+      } else {
+        this.api.Put('Asistenciums', this.id, this.form.value).then(() => {
+
           // Éxito en la llamada POST
           this.submitEM.emit();
-         }, (error) => {
-           // Error en la llamada POST
-           this.error = error.message;
-         });
+          window.location.reload()
+        }, (error) => {
+          // Error en la llamada POST
+          this.error = error.message;
+        });
       }
-     } else {
-       validationMessage = 'Validacion incorrecta';
-     }
+    } else {
+      validationMessage = 'Validacion incorrecta';
+    }
  
      validationMessage == "Validacion incorrecta" ? Swal.fire(
        'Error',

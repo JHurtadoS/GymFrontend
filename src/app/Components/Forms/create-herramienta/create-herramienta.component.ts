@@ -10,15 +10,22 @@ import Swal from 'sweetalert2';
 })
 export class CreateHerramientaComponent implements OnInit {
   form: FormGroup = new FormGroup({
+    id: new FormControl(),
     nombre: new FormControl(null, [Validators.required, Validators.max(80)]),
     imagenAsociada: new FormControl(null, [Validators.required]),
   });
 
   constructor(private api: ApiService, public forms: FormsService) { }
+  accion: "put" | "post"
+  id?: any
+  idName = "id"
+  
   ngOnInit(): void {
     this.forms.element.subscribe((res: any)=>{
       if(res!=null){
+        this.form.setControl('id', new FormControl(res.id));
         this.form.setControl('nombre', new FormControl(res.nombre));
+        this.form.setControl('descripcion', new FormControl(res.descripcion));
         this.form.setControl('imagenAsociada', new FormControl(res.imagenAsociada));
       }
     })
@@ -29,6 +36,8 @@ export class CreateHerramientaComponent implements OnInit {
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
       const formData = new FormData();
+      const { id, ...value } = this.form.value;
+
       formData.append('nombre', this.form.get('nombre').value);
       formData.append('imagenAsociada', this.form.get('imagenAsociada').value);
       console.log(formData.getAll("imagenAsociada"))

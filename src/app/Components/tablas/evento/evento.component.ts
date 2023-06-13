@@ -25,15 +25,14 @@ export class EventoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.GetAsistencia();
+    this.GetEvento();
   }
 
-  public async GetAsistencia() {
-    this.api.Get('Eventoes').then((res) => {
+  public async GetEvento() {
+    this.api.Get(this.Controller).then((res) => {
       console.log(res)
       this.dataSource.data = res;
       this.data = res
-
     });
     this.component = CreateEventoComponent
 

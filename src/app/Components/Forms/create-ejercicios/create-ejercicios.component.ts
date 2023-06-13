@@ -52,9 +52,17 @@ export class CreateEjerciciosComponent implements OnInit {
   }
 
   constructor(private api: ApiService, public forms: FormsService) { }
+  accion: "put" | "post"
+  id?: any
+  idName = "id"
+  
   ngOnInit(): void {
     this.GetHerramienta();
     this.forms.element.subscribe((res: any) => {
+      this.accion = res.length == 0 ? "post" : "put";
+      console.log(this.accion)
+      this.id = this.accion == "put" ? res[this.idName] : undefined;
+
       if (res != null) {
         this.form.setControl('videoAsociado', new FormControl(res.videoAsociado));
         this.form.setControl('nombre', new FormControl(res.nombre));
@@ -68,17 +76,35 @@ export class CreateEjerciciosComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.accion)
     let validationMessage: string;
+    const formData = new FormData();
+    const { id, ...value } = this.form.value;
+
     console.log(this.form.value)
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
-      this.api.Post('Ejercicios', this.form.value).then(() => {
-        // Éxito en la llamada POST
-        this.submitEM.emit();
-      }, (error) => {
-        // Error en la llamada POST
-        this.error = error.message;
-      });
+      if (this.accion == "post") {
+
+        this.api.Post2('Ejercicios', value).then(() => {
+          // Éxito en la llamada POST
+          this.submitEM.emit();
+          window.location.reload()
+        }, (error) => {
+          // Error en la llamada POST
+          this.error = error.message;
+        });
+      } else {
+        this.api.Put('Ejercicios', this.id, this.form.value).then(() => {
+
+          // Éxito en la llamada POST
+          this.submitEM.emit();
+          window.location.reload()
+        }, (error) => {
+          // Error en la llamada POST
+          this.error = error.message;
+        });
+      }
     } else {
       validationMessage = 'Validacion incorrecta';
     }
