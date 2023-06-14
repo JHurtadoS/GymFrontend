@@ -69,7 +69,7 @@ export class CreateEjerciciosComponent implements OnInit {
         this.form.setControl('tipo', new FormControl(res.tipo));
         this.form.setControl('ncalorias', new FormControl(res.ncalorias));
         this.form.setControl('maquina', new FormControl(res.maquina));
-        this.form.setControl('ejercicioIdHerramienta', new FormControl(res.ejercicioIdHerramienta));
+        //this.form.setControl('ejercicioIdHerramienta', new FormControl(res.ejercicioIdHerramienta));
 
       }
     })
@@ -95,14 +95,21 @@ export class CreateEjerciciosComponent implements OnInit {
           this.error = error.message;
         });
       } else {
-        this.api.Put('Ejercicios', this.id, this.form.value).then(() => {
+        console.log(this.form.value)
+        console.log(this.id)
+        const prubea = this.id
+        const value ={id:prubea,...this.form.value}
+        this.api.Put('Ejercicios', this.id, value).then(() => {
 
           // Éxito en la llamada POST
           this.submitEM.emit();
-          window.location.reload()
+          
+        window.location.reload()
         }, (error) => {
           // Error en la llamada POST
+        
           this.error = error.message;
+          console.log(error)
         });
       }
     } else {

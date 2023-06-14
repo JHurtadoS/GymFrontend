@@ -44,12 +44,22 @@ export class CreatePersonaComponent implements OnInit {
   idName = "id"
   id?: any
   Usuarios: Usuario[]
+  idUsuario:number
 
   public async GetUsuario() {
     this.api.Get('Usuarios').then((res: Array<Usuario>) => {
-      this.Usuarios = res;
-      console.log(this.Usuarios)
+       return this.Usuarios = res;
+      //console.log(this.Usuarios)
     });
+  }
+
+
+  public getIdUsuario(correo:string){
+    console.log(this.Usuarios)
+
+    if(this.Usuarios)
+    return this.Usuarios.find((e)=>e.correo==correo).idUsuario
+    else return null
   }
 
 
@@ -58,15 +68,27 @@ export class CreatePersonaComponent implements OnInit {
   ngOnInit(): void {
     this.forms.element.subscribe((res: any) => {
       this.GetUsuario()
+      console.log(this.Usuarios)
       console.log(res.lengt)
       this.accion = res.length == 0 ? "post" : "put";
       console.log(this.accion)
       this.id = this.accion == "put" ? res[this.idName] : undefined;
+
+
+
       if (res != null) {
 
-        console.log(res)
+        const prueba= this.getIdUsuario(res.correoUsuario)
+        console.log(prueba)
+
         this.form.setControl('id', new FormControl(res.id));
-        this.form.setControl('personaIdUsuario', new FormControl(res.personaIdUsuario));
+        
+        if(this.idUsuario){
+        console.log(this.idUsuario)
+        this.form.setControl('personaIdUsuario', new FormControl(this.idUsuario));}else{
+          console.log(this.idUsuario)
+        }
+
         this.form.setControl('documento', new FormControl(res.documento));
         this.form.setControl('apellidos', new FormControl(res.apellidos));
         this.form.setControl('nombre', new FormControl(res.nombre));
@@ -84,6 +106,8 @@ export class CreatePersonaComponent implements OnInit {
     let validationMessage: string;
     // console.log(this.form.value)
     const value = { ...this.form.value, }
+    value.desahabilitado=true
+    delete value.id
     console.log(value)
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
@@ -102,7 +126,7 @@ export class CreatePersonaComponent implements OnInit {
 
           // Éxito en la llamada POST
           this.submitEM.emit();
-          window.location.reload()
+          //window.location.reload()
         }, (error) => {
           // Error en la llamada POST
           this.error = error.message;
