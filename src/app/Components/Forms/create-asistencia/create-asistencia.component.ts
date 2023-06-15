@@ -52,8 +52,6 @@ export class CreateAsistenciaComponent implements OnInit{
   ngOnInit(): void {
     this.GetPersonas()
     this.forms.element.subscribe((res: any) => {
-     
-
       this.accion = res.length == 0 ? "post" : "put";
       console.log(this.accion)
       this.id = this.accion == "put" ? res[this.idName] : undefined;
@@ -95,7 +93,7 @@ export class CreateAsistenciaComponent implements OnInit{
 
           // Éxito en la llamada POST
           this.submitEM.emit();
-          //window.location.reload()
+          window.location.reload()
         }, (error) => {
           // Error en la llamada POST
           this.error = error.message;

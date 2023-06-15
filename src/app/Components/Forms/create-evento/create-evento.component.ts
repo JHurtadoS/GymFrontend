@@ -4,6 +4,20 @@ import { ApiService } from 'src/app/Services/api.service';
 import { FormsService } from 'src/app/services/forms.service';
 import Swal from 'sweetalert2';
 
+
+interface Persona {
+  correoUsuario:  string;
+  id:             number;
+  documento:      number;
+  nombre:         string;
+  apellidos:      string;
+  celular:        number;
+  genero:         string;
+  rh:             string;
+  rol:            string;
+  desahabilitado: boolean;
+}
+
 @Component({
   selector: 'app-create-evento',
   templateUrl: './create-evento.component.html',
@@ -17,13 +31,26 @@ export class    CreateEventoComponent implements OnInit{
     horaSalida: new FormControl('', [Validators.required])
   });
 
+
+  Personas:Persona[]
+
+
+
+  public async GetPersonas() {
+    this.api.Get('Personas').then((res: Array<Persona>) => {
+       return this.Personas = res;
+      //console.log(this.Usuarios)
+    });
+  }
+
   constructor(private api: ApiService, public forms:FormsService) { }
   
   accion: "put" | "post"
   id?: any
   idName = "idEventos"
-  
+
   ngOnInit(): void {
+    this.GetPersonas()
     this.forms.element.subscribe((res: any)=>{
       this.accion = res.length == 0 ? "post" : "put";
       console.log(this.accion)
@@ -34,6 +61,8 @@ export class    CreateEventoComponent implements OnInit{
         this.form.setControl('fecha', new FormControl(res.fecha));
         this.form.setControl('horaInicio', new FormControl(res.horaInicio));
         this.form.setControl('horaSalida', new FormControl(res.horaSalida));
+        this.form.setControl('PersonaId', new FormControl(res.PersonaId));
+
       }
     })
   }
@@ -42,10 +71,11 @@ export class    CreateEventoComponent implements OnInit{
     let validationMessage: string;
     const formData = new FormData();
     const { idEventos, ...value } = this.form.value;
-    
+
+
     console.log(this.form.value)
     if (this.form.valid) {
-      validationMessage = 'La validación fue correcta';
+      validationMessage = 'Validacion Correcta';
       if (this.accion == "post") {
 
         this.api.Post2('Eventoes', value).then(() => {
@@ -57,7 +87,11 @@ export class    CreateEventoComponent implements OnInit{
           this.error = error.message;
         });
       } else {
-        this.api.Put('Eventoes', this.id, this.form.value).then(() => {
+        console.log(this.form.value)
+        console.log(this.id)
+        const prubea = this.id
+        const value ={id:prubea,...this.form.value}
+        this.api.Put('Eventoes', this.id, value).then(() => {
 
           // Éxito en la llamada POST
           this.submitEM.emit();
@@ -70,7 +104,6 @@ export class    CreateEventoComponent implements OnInit{
     } else {
       validationMessage = 'Validacion incorrecta';
     }
-
  
      validationMessage == "Validacion incorrecta" ? Swal.fire(
        'Error',
@@ -88,5 +121,3 @@ export class    CreateEventoComponent implements OnInit{
    @Output() submitEM = new EventEmitter();
  }
  
-
-
