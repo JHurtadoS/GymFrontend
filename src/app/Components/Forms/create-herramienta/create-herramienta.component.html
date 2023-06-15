@@ -20,8 +20,14 @@
         </mat-error>
       </mat-form-field>
 
-      <input type="file" (change)="onFileSelected($event)" formControlName="imagenAsociada"
-        accept="image/jpeg,image/png">
+
+      <mat-form-field class="imagenAsociada">
+        <mat-label>imagenAsociada</mat-label>
+        <input type="text" matInput placeholder="imagenAsociada" formControlName="imagenAsociada">
+        <mat-error *ngIf="form.controls['imagenAsociada'].invalid && (form.controls['imagenAsociada'].dirty || form.controls['imagenAsociada'].touched)">
+          Complete el campo
+        </mat-error>
+      </mat-form-field>
 
       <p *ngIf="error" class="error">
         {{ error }}

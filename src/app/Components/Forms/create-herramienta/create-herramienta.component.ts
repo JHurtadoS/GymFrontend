@@ -5,25 +5,31 @@ import { FormsService } from 'src/app/services/forms.service';
 import Swal from 'sweetalert2';
 
 @Component({
+  selector: 'app-create-herramienta',
   templateUrl: './create-herramienta.component.html',
   styleUrls: ['./create-herramienta.component.scss']
 })
 export class CreateHerramientaComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    id: new FormControl(),
+
     nombre: new FormControl(null, [Validators.required, Validators.max(80)]),
+    descripcion: new FormControl(null, [Validators.required]),
     imagenAsociada: new FormControl(null, [Validators.required]),
   });
 
   constructor(private api: ApiService, public forms: FormsService) { }
+  
   accion: "put" | "post"
   id?: any
   idName = "id"
   
   ngOnInit(): void {
     this.forms.element.subscribe((res: any)=>{
+      this.accion = res.length == 0 ? "post" : "put";
+      console.log(this.accion)
+      this.id = this.accion == "put" ? res[this.idName] : undefined;
       if(res!=null){
-        this.form.setControl('id', new FormControl(res.id));
+       
         this.form.setControl('nombre', new FormControl(res.nombre));
         this.form.setControl('descripcion', new FormControl(res.descripcion));
         this.form.setControl('imagenAsociada', new FormControl(res.imagenAsociada));
@@ -32,22 +38,45 @@ export class CreateHerramientaComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.accion)
     let validationMessage: string;
+    const formData = new FormData();
+    const { id, ...value } = this.form.value;
+
+    console.log(this.form.value)
     if (this.form.valid) {
       validationMessage = 'La validación fue correcta';
-      const formData = new FormData();
-      const { id, ...value } = this.form.value;
+      if (this.accion == "post") {
 
-      formData.append('nombre', this.form.get('nombre').value);
-      formData.append('imagenAsociada', this.form.get('imagenAsociada').value);
-      console.log(formData.getAll("imagenAsociada"))
-      this.api.Post('herramientums', formData).then(() => {
-        // Éxito en la llamada POST
-        this.submitEM.emit();
-      }, (error) => {
-        // Error en la llamada POST
-        this.error = error.message;
-      });
+        this.api.Post2('Herramientums', value).then(() => {
+          // Éxito en la llamada POST
+          this.submitEM.emit();
+          window.location.reload()
+        }, (error) => {
+          // Error en la llamada POST
+          this.error = error.message;
+        });
+      } else {
+        console.log(this.form.value)
+        console.log(this.id)
+        const prubea = this.id
+        const value ={id:prubea,...this.form.value}
+        console.log(this.form.value)
+        console.log(this.id)
+      
+        this.api.Put('Herramientums', this.id, value).then(() => {
+
+          // Éxito en la llamada POST
+          this.submitEM.emit();
+          
+          window.location.reload()
+        }, (error) => {
+          // Error en la llamada POST
+        
+          this.error = error.message;
+          console.log(error)
+        });
+      }
     } else {
       validationMessage = 'Validacion incorrecta';
     }
@@ -62,30 +91,11 @@ export class CreateHerramientaComponent implements OnInit {
       'success'
     )
   }
-  onFileSelected(event): void {
-    const file: File = event.target.files[0];
-    if (file) {
-      const ext = file.name.split('.')[1].toLowerCase();
-      if (ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png') {
-        this.form.get('imagenAsociada').setErrors({ 'invalidFileType': true });
-        this.form.get('imagenAsociada').setValue(null);
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (e) => {
-        const base64: string = e.target.result.toString()
-        this.form.get('imagenAsociada').setValue(base64);
-      };
-    }
-  }
-
-  removeImage(): void {
-    this.form.get('imagenAsociada').setValue(null);
-  }
 
   @Input() error: string | null;
 
   @Output() submitEM = new EventEmitter();
 }
+ 
+
+
