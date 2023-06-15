@@ -2,6 +2,22 @@
   <mat-card-title class="title">Formulario asistencia</mat-card-title>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="submit()">
+
+
+
+      <mat-form-field>
+        <mat-label>PersonaId</mat-label>
+        <mat-select formControlName="PersonaId">
+
+          <mat-option *ngFor="let opcion of Personas" [value]="opcion.id">{{ opcion.nombre }}</mat-option>
+
+        </mat-select>
+        <mat-error
+          *ngIf="form.controls['PersonaId'].invalid && (form.controls['PersonaId'].dirty || form.controls['PersonaId'].touched)">
+          Seleccione una opcion
+        </mat-error>
+      </mat-form-field>
+
       <p>
         <mat-form-field class="fechaHora">
 

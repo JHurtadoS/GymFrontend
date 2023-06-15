@@ -28,7 +28,7 @@ export class AsistenciaComponent implements OnInit {
   }
 
   public async GetAsistencia() {
-    this.api.Get('Asistenciums').then((res) => {
+    this.api.Get(this.Controller).then((res) => {
       this.dataSource.data = res;
       this.data = res
     });
